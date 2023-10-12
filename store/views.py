@@ -48,8 +48,10 @@ class PersonViewSet(ModelViewSet):
 
         current_datetime = timezone.now()
         past_datetime = current_datetime - timedelta(days=90)
+        # donors = Person.objects.all().filter(
+        #     user__date_joined__gte=past_datetime, user__is_donor=True)
         donors = Person.objects.all().filter(
-            user__date_joined__gte=past_datetime, user__is_donor=True)
+            latest_donation__gte=past_datetime, user__is_donor=True)
         serializer = PersonSerializer(donors, many=True)
         return Response(serializer.data)
 

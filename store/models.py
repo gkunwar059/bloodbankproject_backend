@@ -103,6 +103,7 @@ class Person(models.Model):
     profession = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(
         upload_to='person/images', null=True, blank=True)
+    latest_donation = models.DateField(null=True, blank=True)
 
     def first_name(self):
         return self.user.first_name
