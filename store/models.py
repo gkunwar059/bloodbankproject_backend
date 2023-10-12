@@ -87,7 +87,6 @@ class Address(models.Model):
     def __str__(self):
         return f"{self.house_number}, {self.tole}, {self.ward}, {self.municipality}, {self.district}, {self.province}"
 
-
 class Person(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
