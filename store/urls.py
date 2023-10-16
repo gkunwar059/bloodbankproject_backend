@@ -2,6 +2,7 @@
 
 
 from rest_framework_nested import routers
+
 from . import views
 
 router = routers.DefaultRouter()
@@ -27,12 +28,19 @@ gallery_router = routers.NestedDefaultRouter(router, 'galleries', lookup='galler
 emergency_router = routers.NestedDefaultRouter(router, 'emergency-donors', lookup='emergency')
 associate_router = routers.NestedDefaultRouter(router, 'associates', lookup='associate')
 hospital_router = routers.NestedDefaultRouter(router, 'associate-hospitals', lookup='hospital')
+municipality_router = routers.NestedDefaultRouter(router, 'municipalities', lookup='municipality')
+
+
 
 gallery_router.register('images', views.GalleryImageViewSet, basename='gallery-images')
 emergency_router.register('members', views.EmergencyDonorOrganizationMemberViewSet, basename='emergency-members')
 associate_router.register('members', views.AssociateVolunteerMemberViewSet, basename='associate-members')
 hospital_router.register('members', views.AssociateHospitalMemberViewSet, basename='hospital-members')
+associate_router.register('quick-contacts', views.AssociateVolunteerQuickContactViewSet, basename='associate-quick-contacts')
+hospital_router.register('quick-contacts', views.AssociateHospitalQuickContactViewSet, basename='hospital-quick-contacts')
+emergency_router.register('quick-contacts', views.EmergencyDonorOrganizationQuickContactViewSet, basename='emergency-quick-contacts')
+municipality_router.register('quick-contacts', views.MunicipalityQuickContactViewSet, basename='municipality-quick-contacts')
 
 
 
-urlpatterns = router.urls + gallery_router.urls + emergency_router.urls +  associate_router.urls + hospital_router.urls
+urlpatterns = router.urls + gallery_router.urls + emergency_router.urls +  associate_router.urls + hospital_router.urls + municipality_router.urls

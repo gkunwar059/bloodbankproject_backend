@@ -1,38 +1,50 @@
+import random
 import sys
 from datetime import datetime, timedelta
 
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
 from django.db.models.aggregates import Count
 from django.shortcuts import render
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
+from core.models import OTP
 from store.models import (AssociateHospital, AssociateHospitalMember,
-                          AssociateVolunteer, AssociateVolunteerMember, Blog,
+                          AssociateHospitalQuickContact, AssociateVolunteer,
+                          AssociateVolunteerMember,
+                          AssociateVolunteerQuickContact, Blog,
                           BloodDonorRequest, District,
                           EmergencyDonorOrganization,
-                          EmergencyDonorOrganizationMember, Gallery,
-                          GalleryImage, Municipality, Person, Province,
-                          Sponsor, UserReview, VolunteerRequest, Ward)
-from store.serializers import (AssociateHospitalMemberSerializer,
-                               AssociateHospitalSerializer,
-                               AssociateVolunteerMemberSerializer,
-                               AssociateVolunteerSerializer, BlogSerializer,
-                               BloodDonorRequestSerializer, DistrictSerializer,
-                               EmergencyDonorOrganizationMemberSerializer,
-                               EmergencyDonorOrganizationSerializer,
-                               GalleryImgeSerializer, GallerySerializer,
-                               MunicipalitySerializer, PersonSerializer,
-                               ProvinceSerializer, SponsorSerializer,
-                               UserReviewSerializer,
-                               VolunteerRequestSerializer, WardSerializer)
+                          EmergencyDonorOrganizationMember,
+                          EmergencyDonorOrganizationQuickContact, Gallery,
+                          GalleryImage, Municipality, MunicipalityQuickContact,
+                          Person, Province, Sponsor, UserReview,
+                          VolunteerRequest, Ward)
+from store.serializers import (
+    AssociateHospitalMemberSerializer, AssociateHospitalQuickContactSerializer,
+    AssociateHospitalSerializer, AssociateVolunteerMemberSerializer,
+    AssociateVolunteerQickConactSerializer, AssociateVolunteerSerializer,
+    BlogSerializer, BloodDonorRequestSerializer, DistrictSerializer,
+    EmergencyDonorOrganizationMemberSerializer,
+    EmergencyDonorOrganizationQuickContactSerializer,
+    EmergencyDonorOrganizationSerializer, GalleryImgeSerializer,
+    GallerySerializer, MunicipalityQuickContactSerializer,
+    MunicipalitySerializer, PersonSerializer, ProvinceSerializer,
+    SponsorSerializer, UserReviewSerializer, VolunteerRequestSerializer,
+    WardSerializer)
 
 from .filters import PersonFilter
 
 # Create your views here.
+
 
 
 class PersonViewSet(ModelViewSet):
@@ -108,6 +120,16 @@ class DistrictViewSet(ModelViewSet):
     serializer_class = DistrictSerializer
 
 
+class MunicipalityQuickContactViewSet(ModelViewSet):
+    serializer_class = MunicipalityQuickContactSerializer
+
+    def get_queryset(self):
+        return MunicipalityQuickContact.objects.filter(organization_id=self.kwargs['municipality_pk'])
+
+    def get_serializer_context(self):
+        return {'municipality_id': self.kwargs['municipality_pk']}
+    
+
 class MunicipalityViewSet(ModelViewSet):
     queryset = Municipality.objects.all()
     serializer_class = MunicipalitySerializer
@@ -172,6 +194,18 @@ class UserReviewViewSet(ModelViewSet):
 class EmergencyDonorOrganizationViewSet(ModelViewSet):
     queryset = EmergencyDonorOrganization.objects.all()
     serializer_class = EmergencyDonorOrganizationSerializer
+    
+
+class EmergencyDonorOrganizationQuickContactViewSet(ModelViewSet):
+    serializer_class = EmergencyDonorOrganizationQuickContactSerializer
+
+    def get_queryset(self):
+        return EmergencyDonorOrganizationQuickContact .objects.filter(organization_id=self.kwargs['emergency_pk'])
+
+    def get_serializer_context(self):
+        return {'emergency_id': self.kwargs['emergency_pk']}
+    
+
 
 
 class EmergencyDonorOrganizationMemberViewSet(ModelViewSet):
@@ -189,6 +223,15 @@ class AssociateVolunteerViewSet(ModelViewSet):
     serializer_class = AssociateVolunteerSerializer
 
 
+class AssociateVolunteerQuickContactViewSet(ModelViewSet):
+    serializer_class = AssociateVolunteerQickConactSerializer
+
+    def get_queryset(self):
+        return AssociateVolunteerQuickContact.objects.filter(organization_id=self.kwargs['associate_pk'])
+
+    def get_serializer_context(self):
+        return {'associate_id': self.kwargs['associate_pk']}
+    
 class AssociateVolunteerMemberViewSet(ModelViewSet):
     serializer_class = AssociateVolunteerMemberSerializer
 
@@ -199,10 +242,21 @@ class AssociateVolunteerMemberViewSet(ModelViewSet):
         return {'associate_id': self.kwargs['associate_pk']}
 
 
+
+
 class AssociateHospitalViewSet(ModelViewSet):
     queryset = AssociateHospital.objects.all()
     serializer_class = AssociateHospitalSerializer
 
+
+class AssociateHospitalQuickContactViewSet(ModelViewSet):
+    serializer_class = AssociateHospitalQuickContactSerializer
+
+    def get_queryset(self):
+        return AssociateHospitalQuickContact.objects.filter(organization_id=self.kwargs['hospital_pk'])
+
+    def get_serializer_context(self):
+        return {'hospital_id': self.kwargs['hospital_pk']}
 
 class AssociateHospitalMemberViewSet(ModelViewSet):
     serializer_class = AssociateHospitalMemberSerializer
@@ -227,3 +281,53 @@ class VolunteerRequestViewSet(ModelViewSet):
 class SponsorViewSet(ModelViewSet):
     queryset = Sponsor.objects.all()
     serializer_class = SponsorSerializer
+
+
+
+User = get_user_model()
+
+
+class OTPCreateView(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        new_password = request.data.get('new_password')
+        if email:
+            user = User.objects.filter(email=email).first()
+            if user:
+                otp = OTP.objects.get(user=user)
+                if otp:
+                    otp.delete()
+                otp_code = ''.join(random.choice('0123456789') for _ in range(4))
+                otp = OTP.objects.create(user=user, new_password=new_password, otp_code = otp_code)
+                otp.save()
+
+                # Send the OTP code to the user via email
+                subject = 'Password Reset OTP'
+                message = f'Your OTP code for password reset is: {otp_code}'
+                from_email = settings.EMAIL_HOST_USER
+                recipient_list = [user.email]
+
+                send_mail(subject, message, from_email, recipient_list)
+
+                return Response({'detail': 'OTP code sent to your email'}, status=status.HTTP_200_OK)
+
+        return Response({'detail': 'User not found'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+class OTPConfirmView(APIView):
+    def post(self, request):
+        otp_code = request.data.get('otp_code')
+        otp = OTP.objects.get(otp_code = otp_code)
+
+        if otp:
+            user = User.objects.get(otp = otp)
+            
+            user.set_password(otp.new_password)
+            user.save()
+            otp.delete()
+
+            return Response({'detail': 'Password reset successfully'}, status=status.HTTP_200_OK)
+
+        return Response({'detail': 'Invalid OTP code'}, status=status.HTTP_400_BAD_REQUEST)

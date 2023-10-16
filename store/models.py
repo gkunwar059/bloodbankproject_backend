@@ -4,6 +4,7 @@ from datetime import date
 
 from django.conf import settings
 from django.db import models
+from smart_selects.db_fields import ChainedForeignKey, ChainedManyToManyField
 
 from store.data import (DISTRICTS_CHOICES, MUNICIPALITY_VDC_CHOICES,
                         PROVIENCES_CHOICES)
@@ -60,6 +61,18 @@ class Municipality(models.Model):
     def __str__(self):
         return self.name
 
+class MunicipalityQuickContact(models.Model):
+    organization = models.ForeignKey(
+        Municipality, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    contact = models.CharField(max_length=10, null=True, blank=True)
+    
+
+    def __str__(self):
+        return f"{self.name}: {self.contact}"
+
+
+
 
 class Ward(models.Model):
     municipality = models.ForeignKey(Municipality, on_delete=models.PROTECT)
@@ -72,11 +85,10 @@ class Ward(models.Model):
 
 
 class Address(models.Model):
-    # province = models.CharField(max_length=50, choices=PROVIENCES_CHOICES, null= False, blank=False, unique=True)
-    # district = models.CharField(max_length=100, choices=DISTRICTS_CHOICES, null= False, blank=False)
-    # municipality = models.CharField(max_length=100, choices=MUNICIPALITY_VDC_CHOICES, null= False, blank=False)
     province = models.ForeignKey(Province, on_delete=models.CASCADE)
-    district = models.ForeignKey(District, on_delete=models.CASCADE)
+    # district = models.ForeignKey(District, on_delete=models.CASCADE)
+    district = ChainedForeignKey(District, chained_field="province", chained_model_field="province", show_all=False, auto_choose=True)
+    # district = ChainedManyToManyField(District, chained_field="province", chained_model_field="province",  auto_choose=True, horizontal=True)
     municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE)
     # ward = models.CharField(max_length=10)
     ward = models.ForeignKey(Ward, on_delete=models.PROTECT)
@@ -200,6 +212,15 @@ class UserReview(models.Model):
 class EmergencyDonorOrganization(models.Model):
     profession = models.CharField(max_length=255)
 
+class EmergencyDonorOrganizationQuickContact(models.Model):
+    organization = models.ForeignKey(
+        EmergencyDonorOrganization, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    contact = models.CharField(max_length=10, null=True, blank=True)
+    
+
+    def __str__(self):
+        return f"{self.name}: {self.contact}"
 
 class EmergencyDonorOrganizationMember(models.Model):
     organization = models.ForeignKey(
@@ -221,6 +242,15 @@ class AssociateVolunteer(models.Model):
     address = models.CharField(max_length=255)
     contact = models.CharField(max_length=10, null=True, blank=True)
 
+class AssociateVolunteerQuickContact(models.Model):
+    organization = models.ForeignKey(
+        AssociateVolunteer, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    contact = models.CharField(max_length=10, null=True, blank=True)
+    
+
+    def __str__(self):
+        return f"{self.name}: {self.contact}"
 
 class AssociateVolunteerMember(models.Model):
     organization = models.ForeignKey(
@@ -243,6 +273,16 @@ class AssociateHospital(models.Model):
     address = models.CharField(max_length=255)
     contact = models.CharField(max_length=10, null=True, blank=True)
 
+class AssociateHospitalQuickContact(models.Model):
+    organization = models.ForeignKey(
+        AssociateHospital, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    contact = models.CharField(max_length=10, null=True, blank=True)
+    
+
+    def __str__(self):
+        return f"{self.name}: {self.contact}"
+
 
 class AssociateHospitalMember(models.Model):
     hospital = models.ForeignKey(AssociateHospital, on_delete=models.CASCADE)
@@ -257,6 +297,8 @@ class AssociateHospitalMember(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+
 
 
 class BloodDonorRequest(models.Model):

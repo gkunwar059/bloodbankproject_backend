@@ -169,6 +169,16 @@ CORS_ALLOWED_ORIGINS = [
 
 # CORS_ALLOW_ALL_ORIGINS: True
 
+# SMTP Configuration for Gmail
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587  # Use 587 for TLS or 465 for SSL
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = "your-gamil-id"
+EMAIL_HOST_PASSWORD = "your-password"
+EMAIL_FROM = "your-gmail-id"
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -184,9 +194,16 @@ SIMPLE_JWT = {
 
 
 DJOSER = {
+    
+    'PASSWORD_RESET_CONFIRM_URL': '/password/reset/confirm/{uid}/{token}',
+    # 'SEND_ACTIVATION_EMAIL': True,
 
     'SERIALIZERS': {
         'current_user': 'core.serializers.UserSerializer',
         'user_create': 'core.serializers.UserCreateSerializer',
+        'password_reset': 'djoser.serializers.SendEmailResetSerializer',
+        'password_reset_confirm': 'djoser.serializers.PasswordResetConfirmSerializer',
     },
 }
+
+USE_DJANGO_JQUERY = True

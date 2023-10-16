@@ -1,9 +1,19 @@
 
 from django.conf import settings
-
-from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from store.models import Blog, Gallery, GalleryImage, Sponsor, VolunteerRequest, Municipality, Person, Address, Ward, UserReview, EmergencyDonorOrganization, EmergencyDonorOrganizationMember,  AssociateVolunteer, AssociateVolunteerMember, AssociateHospital, AssociateHospitalMember, Province, District, BloodDonorRequest
+from rest_framework import serializers
+
+from store.models import (Address, AssociateHospital, AssociateHospitalMember,
+                          AssociateHospitalQuickContact, AssociateVolunteer,
+                          AssociateVolunteerMember,
+                          AssociateVolunteerQuickContact, Blog,
+                          BloodDonorRequest, District,
+                          EmergencyDonorOrganization,
+                          EmergencyDonorOrganizationMember,
+                          EmergencyDonorOrganizationQuickContact, Gallery,
+                          GalleryImage, Municipality, MunicipalityQuickContact,
+                          Person, Province, Sponsor, UserReview,
+                          VolunteerRequest, Ward)
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -61,6 +71,13 @@ class DistrictSerializer(serializers.ModelSerializer):
     class Meta:
         model = District
         fields = ['id', 'name']
+        
+        
+class MunicipalityQuickContactSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MunicipalityQuickContact
+        fields = ['id', 'name', 'contact']
 
 
 class MunicipalitySerializer(serializers.ModelSerializer):
@@ -133,6 +150,13 @@ class EmergencyDonorOrganizationMemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmergencyDonorOrganizationMember
         fields = ['id', 'name', 'age', 'contact', 'bloodGroup']
+        
+
+class EmergencyDonorOrganizationQuickContactSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = EmergencyDonorOrganizationQuickContact
+        fields = ['id', 'name', 'contact']
 
 
 class EmergencyDonorOrganizationSerializer(serializers.ModelSerializer):
@@ -148,6 +172,12 @@ class AssociateVolunteerMemberSerializer(serializers.ModelSerializer):
         model = AssociateVolunteerMember
         fields = ['id', 'name', 'age', 'contact', 'bloodGroup',
                   'profession', 'permanent_address', 'current_address', 'workplace']
+        
+class AssociateVolunteerQickConactSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AssociateVolunteerQuickContact
+        fields = ['id', 'name', 'contact']
 
 
 class AssociateVolunteerSerializer(serializers.ModelSerializer):
@@ -163,6 +193,13 @@ class AssociateHospitalMemberSerializer(serializers.ModelSerializer):
         model = AssociateHospitalMember
         fields = ['id', 'name', 'age', 'contact', 'bloodGroup',
                   'profession', 'permanent_address', 'current_address', 'workplace']
+
+
+class AssociateHospitalQuickContactSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AssociateHospitalQuickContact
+        fields = ['id', 'name', 'contact']
 
 
 class AssociateHospitalSerializer(serializers.ModelSerializer):
