@@ -7,10 +7,13 @@ from django.http import HttpResponseRedirect
 from django.utils.html import format_html
 
 from store.models import (Address, AssociateHospital, AssociateHospitalMember,
-                          AssociateVolunteer, AssociateVolunteerMember, Blog,
+                          AssociateHospitalQuickContact, AssociateVolunteer,
+                          AssociateVolunteerMember,
+                          AssociateVolunteerQuickContact, Blog,
                           BloodDonorRequest, District,
                           EmergencyDonorOrganization,
-                          EmergencyDonorOrganizationMember, Gallery,
+                          EmergencyDonorOrganizationMember,
+                          EmergencyDonorOrganizationQuickContact, Gallery,
                           GalleryImage, Municipality, Person, Province,
                           Sponsor, UserReview, VolunteerRequest, Ward)
 
@@ -145,34 +148,47 @@ class UserReviewAdmin(admin.ModelAdmin):
 class EmergencyDonorOrganizationMemberAdminInline(admin.TabularInline):
     model = EmergencyDonorOrganizationMember
     extra = 0
+    
+class EmergencyDonorOrganizationQuickContactAdminInline(admin.TabularInline):
+    model = EmergencyDonorOrganizationQuickContact
+    extra = 0
 
 
 @admin.register(EmergencyDonorOrganization)
 class EmergencyDonorOrganizationAdmin(admin.ModelAdmin):
     list_display = ['profession',]
-    inlines = [EmergencyDonorOrganizationMemberAdminInline]
+    inlines = [EmergencyDonorOrganizationQuickContactAdminInline, EmergencyDonorOrganizationMemberAdminInline]
 
 
 class AssociateVolunteerMemberAdminInline(admin.TabularInline):
     model = AssociateVolunteerMember
     extra = 0
 
+class AssociateVolunteerQuickContactAdminInline(admin.TabularInline):
+    model = AssociateVolunteerQuickContact
+    extra = 0
+
 
 @admin.register(AssociateVolunteer)
 class AssociateVolunteerAdmin(admin.ModelAdmin):
     list_display = ['name', 'address', 'contact']
-    inlines = [AssociateVolunteerMemberAdminInline]
+    inlines = [AssociateVolunteerQuickContactAdminInline, AssociateVolunteerMemberAdminInline]
 
 
 class AssociateHospitalMemberAdminInline(admin.TabularInline):
     model = AssociateHospitalMember
     extra = 0
 
+class AssociateHospitalQuickContactAdminInline(admin.TabularInline):
+    model = AssociateHospitalQuickContact
+    extra = 0
+
+
 
 @admin.register(AssociateHospital)
 class AssociateVolunteerAdmin(admin.ModelAdmin):
     list_display = ['name', 'address', 'contact']
-    inlines = [AssociateHospitalMemberAdminInline]
+    inlines = [AssociateHospitalQuickContactAdminInline, AssociateHospitalMemberAdminInline]
 
 
 @admin.register(BloodDonorRequest)
