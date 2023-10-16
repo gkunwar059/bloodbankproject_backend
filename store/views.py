@@ -293,10 +293,13 @@ class OTPCreateView(APIView):
         new_password = request.data.get('new_password')
         if email:
             user = User.objects.filter(email=email).first()
+            
             if user:
-                otp = OTP.objects.get(user=user)
-                if otp:
+                try:
+                    otp = OTP.objects.get(user=user)
                     otp.delete()
+                except OTP.DoesNotExist:
+                    pass
                 otp_code = ''.join(random.choice('0123456789') for _ in range(4))
                 otp = OTP.objects.create(user=user, new_password=new_password, otp_code = otp_code)
                 otp.save()
@@ -319,11 +322,12 @@ class OTPCreateView(APIView):
 class OTPConfirmView(APIView):
     def post(self, request):
         otp_code = request.data.get('otp_code')
-        otp = OTP.objects.get(otp_code = otp_code)
-
+        try:
+            otp = OTP.objects.get(otp_code = otp_code)
+        except OTP.DoesNotExist:
+            return Response({'detail': 'Invalid OTP code'}, status=status.HTTP_400_BAD_REQUEST)
         if otp:
             user = User.objects.get(otp = otp)
-            
             user.set_password(otp.new_password)
             user.save()
             otp.delete()

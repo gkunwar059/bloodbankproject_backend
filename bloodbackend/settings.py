@@ -164,7 +164,9 @@ INTERNAL_IPS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:8000",
-    "http://192.168.1.89:8000",
+    "http://192.168.1.88:3000",
+    "http://192.168.1.88:8000",
+    "http://192.168.1.89:8000"
 ]
 
 # CORS_ALLOW_ALL_ORIGINS: True
@@ -174,9 +176,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # Use 587 for TLS or 465 for SSL
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = "your-gamil-id"
-EMAIL_HOST_PASSWORD = "your-password"
-EMAIL_FROM = "your-gmail-id"
+EMAIL_HOST_USER = "gjkkunwar07@gmail.com"
+EMAIL_HOST_PASSWORD = "ahlfyokzdxcglixf"
+EMAIL_FROM = "gjkkunwar07@gmail.com"
 
 
 REST_FRAMEWORK = {
