@@ -7,7 +7,7 @@ from django.db import models
 from smart_selects.db_fields import ChainedForeignKey, ChainedManyToManyField
 
 from store.data import (DISTRICTS_CHOICES, MUNICIPALITY_VDC_CHOICES,
-                        PROVIENCES_CHOICES)
+                        PROVIENCES_CHOICES, WARD_NO_CHOICES)
 
 # Create your models here.
 
@@ -77,21 +77,27 @@ class MunicipalityQuickContact(models.Model):
 class Ward(models.Model):
     municipality = models.ForeignKey(Municipality, on_delete=models.PROTECT)
     name = models.CharField(
-        max_length=50, choices=MUNICIPALITY_VDC_CHOICES, null=False, blank=False)
-    ward_number = models.IntegerField(null=False, blank=False)
+        max_length=50, null=True, blank=True)
+    # ward_number = models.IntegerField(null=False, blank=False)
+    ward_number = models.CharField(
+        max_length=50, choices=WARD_NO_CHOICES, unique=True, null=False, blank=False)
+    
 
     def __str__(self):
-        return self.name
+        return self.name or self.ward_number
+    
+    class Meta:
+        unique_together = (('name', 'ward_number'))
 
 
 class Address(models.Model):
     province = models.ForeignKey(Province, on_delete=models.CASCADE)
     # district = models.ForeignKey(District, on_delete=models.CASCADE)
     district = ChainedForeignKey(District, chained_field="province", chained_model_field="province", show_all=False, auto_choose=True)
-    # district = ChainedManyToManyField(District, chained_field="province", chained_model_field="province",  auto_choose=True, horizontal=True)
-    municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE)
-    # ward = models.CharField(max_length=10)
-    ward = models.ForeignKey(Ward, on_delete=models.PROTECT)
+    municipality = ChainedForeignKey(Municipality, chained_field="district", chained_model_field="district", show_all=False, auto_choose=True)
+    # municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE)
+    ward = ChainedForeignKey(Ward, chained_field="municipality", chained_model_field="municipality", show_all=False, auto_choose=True)
+    # ward = models.ForeignKey(Ward, on_delete=models.PROTECT)
     tole = models.CharField(max_length=150)
     house_number = models.CharField(max_length=20)
     local_name = models.CharField(max_length=255, null=True, blank=True)
@@ -116,6 +122,7 @@ class Person(models.Model):
     image = models.ImageField(
         upload_to='person/images', null=True, blank=True)
     latest_donation = models.DateField(null=True, blank=True)
+    latest_received = models.DateField(null=True, blank=True)
 
     def first_name(self):
         return self.user.first_name

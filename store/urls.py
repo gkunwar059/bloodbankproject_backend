@@ -8,7 +8,6 @@ from . import views
 router = routers.DefaultRouter()
 
 
-
 router.register('people', views.PersonViewSet , basename='people')
 router.register('provinces', views.ProvinceViewSet, basename='provinces')
 router.register('districts', views.DistrictViewSet, basename='districts')

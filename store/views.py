@@ -68,6 +68,20 @@ class PersonViewSet(ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=False, methods=['GET'])
+    def get_milestones(self, request):
+        active_donors_count= Person.objects.all().filter(user__is_donor=True).count()
+        volunteer_count = Person.objects.all().filter(user__is_volunteer=True).count()
+        donors_till_date = Person.objects.all().filter(latest_donation__isnull = False).count()
+        total_blood_recipients = Person.objects.all().filter(latest_received__isnull = False).count()
+        return Response(data= {
+            "active_donors_count": active_donors_count,
+            "volunteer_count": volunteer_count,
+            "donors_till_date": donors_till_date,
+            "total_blood_recipients": total_blood_recipients,
+            
+            }, status=200)
+
+    @action(detail=False, methods=['GET'])
     def all_donors(self, request):
         donors = Person.objects.all().filter(user__is_donor=True)
         serializer = PersonSerializer(donors, many=True)
@@ -84,11 +98,7 @@ class PersonViewSet(ModelViewSet):
     #     donors = Person.objects.all().filter(user__is_emergency_donor=True)
     #     serializer = PersonSerializer(donors, many=True)
     #     return Response(serializer.data)
-    @action(detail=False, methods=['GET'])
-    def all_donors(self, request):
-        donors = Person.objects.all().filter(user__is_donor=True)
-        serializer = PersonSerializer(donors, many=True)
-        return Response(serializer.data)
+    
 
     @action(detail=False, methods=['GET'])
     def volunteers(self, request):

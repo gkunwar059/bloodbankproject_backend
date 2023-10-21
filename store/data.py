@@ -15,7 +15,6 @@ PROVIENCES_CHOICES = [
          (Provience_7, 'Sudurpashchim Pradesh'),
     ]
 
-
 district_1 = 'Achham'
 district_2 = 'Arghakhanchi'
 district_3 = 'Baglung'
@@ -175,207 +174,361 @@ DISTRICTS_CHOICES = [
     ]
 
 
-municipality_vdc_1 = 'Kathmandu'
-municipality_vdc_2 = 'Lalitpur'
-municipality_vdc_3 = 'Bhaktapur'
-municipality_vdc_4 = 'Pokhara'
-municipality_vdc_5 = 'Biratnagar'
-municipality_vdc_6 = 'Birgunj'
-municipality_vdc_7 = 'Dharan'
-municipality_vdc_8 = 'Butwal'
-municipality_vdc_9 = 'Bharatpur'
-municipality_vdc_10 = 'Hetauda'
-municipality_vdc_11 = 'Janakpur'
-municipality_vdc_12 = 'Dhangadhi'
-municipality_vdc_13 = 'Nepalgunj'
-municipality_vdc_14 = 'Itahari'
-municipality_vdc_15 = 'Tulsipur'
-municipality_vdc_16 = 'Siddharthanagar'
-municipality_vdc_17 = 'Ghorahi'
-municipality_vdc_18 = 'Bhimdatta'
-municipality_vdc_19 = 'Rajbiraj'
-municipality_vdc_20 = 'Tansen'
-municipality_vdc_21 = 'Madhyapur Thimi'
-municipality_vdc_22 = 'Panauti'
-municipality_vdc_23 = 'Gorkha'
-municipality_vdc_24 = 'Ilam'
-municipality_vdc_25 = 'Damak'
-municipality_vdc_26 = 'Banepa'
-municipality_vdc_27 = 'Dhankuta'
-municipality_vdc_28 = 'Dhulikhel'
-municipality_vdc_29 = 'Lahan'
-municipality_vdc_30 = 'Siddharthanagar'
-municipality_vdc_31 = 'Rajbiraj'
-municipality_vdc_32 = 'Inaruwa'
-municipality_vdc_33 = 'Itahari'
-municipality_vdc_34 = 'Kirtipur'
-municipality_vdc_35 = 'Lahan'
-municipality_vdc_36 = 'Rajbiraj'
-municipality_vdc_37 = 'Siddharthanagar'
-municipality_vdc_38 = 'Tansen'
-municipality_vdc_39 = 'Chitlang'
-municipality_vdc_40 = 'Bandipur'
-municipality_vdc_41 = 'Lwang Ghalel'
-municipality_vdc_42 = 'Ghandruk'
-municipality_vdc_43 = 'Ghale Gaun'
-municipality_vdc_44 = 'Kagbeni'
-municipality_vdc_45 = 'Manang'
-municipality_vdc_46 = 'Marpha'
-municipality_vdc_47 = 'Muktinath'
-municipality_vdc_48 = 'Tsum Valley'
-municipality_vdc_49 = 'Bhulbhule'
-municipality_vdc_50 = 'Dana'
-municipality_vdc_51 = 'Ghermu'
-municipality_vdc_52 = 'Khudi'
-municipality_vdc_53 = 'Syange'
-municipality_vdc_54 = 'Tatopani'
-municipality_vdc_55 = 'Machhapuchhre'
-municipality_vdc_56 = 'Madi'
-municipality_vdc_57 = 'Bhorle'
-municipality_vdc_58 = 'Chhang'
-municipality_vdc_59 = 'Mirkot'
-municipality_vdc_60 = 'Jaimakasala'
-municipality_vdc_61 = 'Dudhpokhari'
-municipality_vdc_62 = 'Kathar'
-municipality_vdc_63 = 'Dhaulagiri'
-municipality_vdc_64 = 'Jaljala'
-municipality_vdc_65 = 'Nisikhola'
-municipality_vdc_66 = 'Raghuganga'
-municipality_vdc_67 = 'Gurans'
-municipality_vdc_68 = 'Beni'
-municipality_vdc_69 = 'Budhiganga'
-municipality_vdc_70 = 'Malika'
-municipality_vdc_71 = 'Lumle'
-municipality_vdc_72 = 'Kande'
-municipality_vdc_73 = 'Lamachaur'
-municipality_vdc_74 = 'Lekhnath'
-municipality_vdc_75 = 'Lekhnath'
-municipality_vdc_76 = 'Ganeshman Charnath'
-municipality_vdc_77 = 'Kathahariya'
-municipality_vdc_78 = 'Shivaraj'
-municipality_vdc_79 = 'Mainapokhar'
-municipality_vdc_80 = 'Shambhunath'
-municipality_vdc_81 = 'Gangawati'
-municipality_vdc_82 = 'Dhankuta'
-municipality_vdc_83 = 'Tehrathum'
-municipality_vdc_84 = 'Hile'
-municipality_vdc_85 = 'Phungling'
-municipality_vdc_86 = 'Panchthar'
-municipality_vdc_87 = 'Sankhuwasabha'
-municipality_vdc_88 = 'Bhojpur'
-municipality_vdc_89 = 'Udayapur'
-municipality_vdc_90 = 'Katari'
-municipality_vdc_91 = 'Okhaldhunga'
-municipality_vdc_92 = 'Siddhicharan'
-municipality_vdc_93 = 'Taplejung'
-municipality_vdc_94 = 'Ilam'
-municipality_vdc_95 = 'Fikkal'
-municipality_vdc_96 = 'Khotang'
-municipality_vdc_97 = 'Sotang'
-municipality_vdc_98 = 'Ramechhap'
-municipality_vdc_99 = 'Phulasi'
-municipality_vdc_100 = 'Halesi'
+# municipality_vdc_1 = 'Kathmandu'
+# municipality_vdc_2 = 'Lalitpur'
+# municipality_vdc_3 = 'Bhaktapur'
+# municipality_vdc_4 = 'Pokhara'
+# municipality_vdc_5 = 'Biratnagar'
+# municipality_vdc_6 = 'Birgunj'
+# municipality_vdc_7 = 'Dharan'
+# municipality_vdc_8 = 'Butwal'
+# municipality_vdc_9 = 'Bharatpur'
+# municipality_vdc_10 = 'Hetauda'
+# municipality_vdc_11 = 'Janakpur'
+# municipality_vdc_12 = 'Dhangadhi'
+# municipality_vdc_13 = 'Nepalgunj'
+# municipality_vdc_14 = 'Itahari'
+# municipality_vdc_15 = 'Tulsipur'
+# municipality_vdc_16 = 'Siddharthanagar'
+# municipality_vdc_17 = 'Ghorahi'
+# municipality_vdc_18 = 'Bhimdatta'
+# municipality_vdc_19 = 'Rajbiraj'
+# municipality_vdc_20 = 'Tansen'
+# municipality_vdc_21 = 'Madhyapur Thimi'
+# municipality_vdc_22 = 'Panauti'
+# municipality_vdc_23 = 'Gorkha'
+# municipality_vdc_24 = 'Ilam'
+# municipality_vdc_25 = 'Damak'
+# municipality_vdc_26 = 'Banepa'
+# municipality_vdc_27 = 'Dhankuta'
+# municipality_vdc_28 = 'Dhulikhel'
+# municipality_vdc_29 = 'Lahan'
+# municipality_vdc_30 = 'Siddharthanagar'
+# municipality_vdc_31 = 'Rajbiraj'
+# municipality_vdc_32 = 'Inaruwa'
+# municipality_vdc_33 = 'Itahari'
+# municipality_vdc_34 = 'Kirtipur'
+# municipality_vdc_35 = 'Lahan'
+# municipality_vdc_36 = 'Rajbiraj'
+# municipality_vdc_37 = 'Siddharthanagar'
+# municipality_vdc_38 = 'Tansen'
+# municipality_vdc_39 = 'Chitlang'
+# municipality_vdc_40 = 'Bandipur'
+# municipality_vdc_41 = 'Lwang Ghalel'
+# municipality_vdc_42 = 'Ghandruk'
+# municipality_vdc_43 = 'Ghale Gaun'
+# municipality_vdc_44 = 'Kagbeni'
+# municipality_vdc_45 = 'Manang'
+# municipality_vdc_46 = 'Marpha'
+# municipality_vdc_47 = 'Muktinath'
+# municipality_vdc_48 = 'Tsum Valley'
+# municipality_vdc_49 = 'Bhulbhule'
+# municipality_vdc_50 = 'Dana'
+# municipality_vdc_51 = 'Ghermu'
+# municipality_vdc_52 = 'Khudi'
+# municipality_vdc_53 = 'Syange'
+# municipality_vdc_54 = 'Tatopani'
+# municipality_vdc_55 = 'Machhapuchhre'
+# municipality_vdc_56 = 'Madi'
+# municipality_vdc_57 = 'Bhorle'
+# municipality_vdc_58 = 'Chhang'
+# municipality_vdc_59 = 'Mirkot'
+# municipality_vdc_60 = 'Jaimakasala'
+# municipality_vdc_61 = 'Dudhpokhari'
+# municipality_vdc_62 = 'Kathar'
+# municipality_vdc_63 = 'Dhaulagiri'
+# municipality_vdc_64 = 'Jaljala'
+# municipality_vdc_65 = 'Nisikhola'
+# municipality_vdc_66 = 'Raghuganga'
+# municipality_vdc_67 = 'Gurans'
+# municipality_vdc_68 = 'Beni'
+# municipality_vdc_69 = 'Budhiganga'
+# municipality_vdc_70 = 'Malika'
+# municipality_vdc_71 = 'Lumle'
+# municipality_vdc_72 = 'Kande'
+# municipality_vdc_73 = 'Lamachaur'
+# municipality_vdc_74 = 'Lekhnath'
+# municipality_vdc_75 = 'Lekhnath'
+# municipality_vdc_76 = 'Ganeshman Charnath'
+# municipality_vdc_77 = 'Kathahariya'
+# municipality_vdc_78 = 'Shivaraj'
+# municipality_vdc_79 = 'Mainapokhar'
+# municipality_vdc_80 = 'Shambhunath'
+# municipality_vdc_81 = 'Gangawati'
+# municipality_vdc_82 = 'Dhankuta'
+# municipality_vdc_83 = 'Tehrathum'
+# municipality_vdc_84 = 'Hile'
+# municipality_vdc_85 = 'Phungling'
+# municipality_vdc_86 = 'Panchthar'
+# municipality_vdc_87 = 'Sankhuwasabha'
+# municipality_vdc_88 = 'Bhojpur'
+# municipality_vdc_89 = 'Udayapur'
+# municipality_vdc_90 = 'Katari'
+# municipality_vdc_91 = 'Okhaldhunga'
+# municipality_vdc_92 = 'Siddhicharan'
+# municipality_vdc_93 = 'Taplejung'
+# municipality_vdc_94 = 'Ilam'
+# municipality_vdc_95 = 'Fikkal'
+# municipality_vdc_96 = 'Khotang'
+# municipality_vdc_97 = 'Sotang'
+# municipality_vdc_98 = 'Ramechhap'
+# municipality_vdc_99 = 'Phulasi'
+# municipality_vdc_100 = 'Halesi'
+
+
+# MUNICIPALITY_VDC_CHOICES = [
+#     (municipality_vdc_1, 'Kathmandu'),
+#     (municipality_vdc_2, 'Lalitpur'),
+#     (municipality_vdc_3, 'Bhaktapur'),
+#     (municipality_vdc_4, 'Pokhara'),
+#     (municipality_vdc_5, 'Biratnagar'),
+#     (municipality_vdc_6, 'Birgunj'),
+#     (municipality_vdc_7, 'Dharan'),
+#     (municipality_vdc_8, 'Butwal'),
+#     (municipality_vdc_9, 'Bharatpur'),
+#     (municipality_vdc_10, 'Hetauda'),
+#     (municipality_vdc_11, 'Janakpur'),
+#     (municipality_vdc_12, 'Dhangadhi'),
+#     (municipality_vdc_13, 'Nepalgunj'),
+#     (municipality_vdc_14, 'Itahari'),
+#     (municipality_vdc_15, 'Tulsipur'),
+#     (municipality_vdc_16, 'Siddharthanagar'),
+#     (municipality_vdc_17, 'Ghorahi'),
+#     (municipality_vdc_18, 'Bhimdatta'),
+#     (municipality_vdc_19, 'Rajbiraj'),
+#     (municipality_vdc_20, 'Tansen'),
+#     (municipality_vdc_21, 'Madhyapur Thimi'),
+#     (municipality_vdc_22, 'Panauti'),
+#     (municipality_vdc_23, 'Gorkha'),
+#     (municipality_vdc_24, 'Ilam'),
+#     (municipality_vdc_25, 'Damak'),
+#     (municipality_vdc_26, 'Banepa'),
+#     (municipality_vdc_27, 'Dhankuta'),
+#     (municipality_vdc_28, 'Dhulikhel'),
+#     (municipality_vdc_29, 'Lahan'),
+#     (municipality_vdc_30, 'Siddharthanagar'),
+#     (municipality_vdc_31, 'Rajbiraj'),
+#     (municipality_vdc_32, 'Inaruwa'),
+#     (municipality_vdc_33, 'Itahari'),
+#     (municipality_vdc_34, 'Kirtipur'),
+#     (municipality_vdc_35, 'Lahan'),
+#     (municipality_vdc_36, 'Rajbiraj'),
+#     (municipality_vdc_37, 'Siddharthanagar'),
+#     (municipality_vdc_38, 'Tansen'),
+#     (municipality_vdc_39, 'Chitlang'),
+#     (municipality_vdc_40, 'Bandipur'),
+#     (municipality_vdc_41, 'Lwang Ghalel'),
+#     (municipality_vdc_42, 'Ghandruk'),
+#     (municipality_vdc_43, 'Ghale Gaun'),
+#     (municipality_vdc_44, 'Kagbeni'),
+#     (municipality_vdc_45, 'Manang'),
+#     (municipality_vdc_46, 'Marpha'),
+#     (municipality_vdc_47, 'Muktinath'),
+#     (municipality_vdc_48, 'Tsum Valley'),
+#     (municipality_vdc_49, 'Bhulbhule'),
+#     (municipality_vdc_50, 'Dana'),
+#     (municipality_vdc_51, 'Ghermu'),
+#     (municipality_vdc_52, 'Khudi'),
+#     (municipality_vdc_53, 'Syange'),
+#     (municipality_vdc_54, 'Tatopani'),
+#     (municipality_vdc_55, 'Machhapuchhre'),
+#     (municipality_vdc_56, 'Madi'),
+#     (municipality_vdc_57, 'Bhorle'),
+#     (municipality_vdc_58, 'Chhang'),
+#     (municipality_vdc_59, 'Mirkot'),
+#     (municipality_vdc_60, 'Jaimakasala'),
+#     (municipality_vdc_61, 'Dudhpokhari'),
+#     (municipality_vdc_62, 'Kathar'),
+#     (municipality_vdc_63, 'Dhaulagiri'),
+#     (municipality_vdc_64, 'Jaljala'),
+#     (municipality_vdc_65, 'Nisikhola'),
+#     (municipality_vdc_66, 'Raghuganga'),
+#     (municipality_vdc_67, 'Gurans'),
+#     (municipality_vdc_68, 'Beni'),
+#     (municipality_vdc_69, 'Budhiganga'),
+#     (municipality_vdc_70, 'Malika'),
+#     (municipality_vdc_71, 'Lumle'),
+#     (municipality_vdc_72, 'Kande'),
+#     (municipality_vdc_73, 'Lamachaur'),
+#     (municipality_vdc_74, 'Lekhnath'),
+#     (municipality_vdc_75, 'Lekhnath'),
+#     (municipality_vdc_76, 'Ganeshman Charnath'),
+#     (municipality_vdc_77, 'Kathahariya'),
+#     (municipality_vdc_78, 'Shivaraj'),
+#     (municipality_vdc_79, 'Mainapokhar'),
+#     (municipality_vdc_80, 'Shambhunath'),
+#     (municipality_vdc_81, 'Gangawati'),
+#     (municipality_vdc_82, 'Dhankuta'),
+#     (municipality_vdc_83, 'Tehrathum'),
+#     (municipality_vdc_84, 'Hile'),
+#     (municipality_vdc_85, 'Phungling'),
+#     (municipality_vdc_86, 'Panchthar'),
+#     (municipality_vdc_87, 'Sankhuwasabha'),
+#     (municipality_vdc_88, 'Bhojpur'),
+#     (municipality_vdc_89, 'Udayapur'),
+#     (municipality_vdc_90, 'Katari'),
+#     (municipality_vdc_91, 'Okhaldhunga'),
+#     (municipality_vdc_92, 'Siddhicharan'),
+#     (municipality_vdc_93, 'Taplejung'),
+#     (municipality_vdc_94, 'Ilam'),
+#     (municipality_vdc_95, 'Fikkal'),
+#     (municipality_vdc_96, 'Khotang'),
+#     (municipality_vdc_97, 'Sotang'),
+#     (municipality_vdc_98, 'Ramechhap'),
+#     (municipality_vdc_99, 'Phulasi'),
+#     (municipality_vdc_100, 'Halesi'),
+# ]
+municipality_vdc_1 = "Sanfebagar"
+municipality_vdc_2 = "Mangalsen"
+municipality_vdc_3 = "KamalBazar"
+municipality_vdc_4 = "Panchadewal Binayak"
+municipality_vdc_5 = "Ramaroshan"
+municipality_vdc_6 = "Chaurpati"
+municipality_vdc_7 = " Turmakhand"
+municipality_vdc_8 = "Mellekh"
+municipality_vdc_9 = "Dhakari"
+municipality_vdc_10 = "Bannigadi Jayagad"
 
 
 MUNICIPALITY_VDC_CHOICES = [
-    (municipality_vdc_1, 'Kathmandu'),
-    (municipality_vdc_2, 'Lalitpur'),
-    (municipality_vdc_3, 'Bhaktapur'),
-    (municipality_vdc_4, 'Pokhara'),
-    (municipality_vdc_5, 'Biratnagar'),
-    (municipality_vdc_6, 'Birgunj'),
-    (municipality_vdc_7, 'Dharan'),
-    (municipality_vdc_8, 'Butwal'),
-    (municipality_vdc_9, 'Bharatpur'),
-    (municipality_vdc_10, 'Hetauda'),
-    (municipality_vdc_11, 'Janakpur'),
-    (municipality_vdc_12, 'Dhangadhi'),
-    (municipality_vdc_13, 'Nepalgunj'),
-    (municipality_vdc_14, 'Itahari'),
-    (municipality_vdc_15, 'Tulsipur'),
-    (municipality_vdc_16, 'Siddharthanagar'),
-    (municipality_vdc_17, 'Ghorahi'),
-    (municipality_vdc_18, 'Bhimdatta'),
-    (municipality_vdc_19, 'Rajbiraj'),
-    (municipality_vdc_20, 'Tansen'),
-    (municipality_vdc_21, 'Madhyapur Thimi'),
-    (municipality_vdc_22, 'Panauti'),
-    (municipality_vdc_23, 'Gorkha'),
-    (municipality_vdc_24, 'Ilam'),
-    (municipality_vdc_25, 'Damak'),
-    (municipality_vdc_26, 'Banepa'),
-    (municipality_vdc_27, 'Dhankuta'),
-    (municipality_vdc_28, 'Dhulikhel'),
-    (municipality_vdc_29, 'Lahan'),
-    (municipality_vdc_30, 'Siddharthanagar'),
-    (municipality_vdc_31, 'Rajbiraj'),
-    (municipality_vdc_32, 'Inaruwa'),
-    (municipality_vdc_33, 'Itahari'),
-    (municipality_vdc_34, 'Kirtipur'),
-    (municipality_vdc_35, 'Lahan'),
-    (municipality_vdc_36, 'Rajbiraj'),
-    (municipality_vdc_37, 'Siddharthanagar'),
-    (municipality_vdc_38, 'Tansen'),
-    (municipality_vdc_39, 'Chitlang'),
-    (municipality_vdc_40, 'Bandipur'),
-    (municipality_vdc_41, 'Lwang Ghalel'),
-    (municipality_vdc_42, 'Ghandruk'),
-    (municipality_vdc_43, 'Ghale Gaun'),
-    (municipality_vdc_44, 'Kagbeni'),
-    (municipality_vdc_45, 'Manang'),
-    (municipality_vdc_46, 'Marpha'),
-    (municipality_vdc_47, 'Muktinath'),
-    (municipality_vdc_48, 'Tsum Valley'),
-    (municipality_vdc_49, 'Bhulbhule'),
-    (municipality_vdc_50, 'Dana'),
-    (municipality_vdc_51, 'Ghermu'),
-    (municipality_vdc_52, 'Khudi'),
-    (municipality_vdc_53, 'Syange'),
-    (municipality_vdc_54, 'Tatopani'),
-    (municipality_vdc_55, 'Machhapuchhre'),
-    (municipality_vdc_56, 'Madi'),
-    (municipality_vdc_57, 'Bhorle'),
-    (municipality_vdc_58, 'Chhang'),
-    (municipality_vdc_59, 'Mirkot'),
-    (municipality_vdc_60, 'Jaimakasala'),
-    (municipality_vdc_61, 'Dudhpokhari'),
-    (municipality_vdc_62, 'Kathar'),
-    (municipality_vdc_63, 'Dhaulagiri'),
-    (municipality_vdc_64, 'Jaljala'),
-    (municipality_vdc_65, 'Nisikhola'),
-    (municipality_vdc_66, 'Raghuganga'),
-    (municipality_vdc_67, 'Gurans'),
-    (municipality_vdc_68, 'Beni'),
-    (municipality_vdc_69, 'Budhiganga'),
-    (municipality_vdc_70, 'Malika'),
-    (municipality_vdc_71, 'Lumle'),
-    (municipality_vdc_72, 'Kande'),
-    (municipality_vdc_73, 'Lamachaur'),
-    (municipality_vdc_74, 'Lekhnath'),
-    (municipality_vdc_75, 'Lekhnath'),
-    (municipality_vdc_76, 'Ganeshman Charnath'),
-    (municipality_vdc_77, 'Kathahariya'),
-    (municipality_vdc_78, 'Shivaraj'),
-    (municipality_vdc_79, 'Mainapokhar'),
-    (municipality_vdc_80, 'Shambhunath'),
-    (municipality_vdc_81, 'Gangawati'),
-    (municipality_vdc_82, 'Dhankuta'),
-    (municipality_vdc_83, 'Tehrathum'),
-    (municipality_vdc_84, 'Hile'),
-    (municipality_vdc_85, 'Phungling'),
-    (municipality_vdc_86, 'Panchthar'),
-    (municipality_vdc_87, 'Sankhuwasabha'),
-    (municipality_vdc_88, 'Bhojpur'),
-    (municipality_vdc_89, 'Udayapur'),
-    (municipality_vdc_90, 'Katari'),
-    (municipality_vdc_91, 'Okhaldhunga'),
-    (municipality_vdc_92, 'Siddhicharan'),
-    (municipality_vdc_93, 'Taplejung'),
-    (municipality_vdc_94, 'Ilam'),
-    (municipality_vdc_95, 'Fikkal'),
-    (municipality_vdc_96, 'Khotang'),
-    (municipality_vdc_97, 'Sotang'),
-    (municipality_vdc_98, 'Ramechhap'),
-    (municipality_vdc_99, 'Phulasi'),
-    (municipality_vdc_100, 'Halesi'),
+    (municipality_vdc_1, 'Sanfebagar'),
+    (municipality_vdc_2, 'Mangalsen'),
+    (municipality_vdc_3, 'KamalBazar'),
+    (municipality_vdc_4, 'Panchadewal Binayak'),
+    (municipality_vdc_5, 'Ramaroshan'),
+    (municipality_vdc_6, 'Chaurpati'),
+    (municipality_vdc_7, 'Turmakhand'),
+    (municipality_vdc_8, 'Mellekh'),
+    (municipality_vdc_9, 'Dhakari'),
+    (municipality_vdc_10, 'Bannigadi Jayagad'),
+    ]
+
+# Mangalsen
+ward_1="1"
+ward_2="2"
+ward_3="3"
+ward_4="4"
+ward_5="5"
+ward_6="6"
+ward_7="7"
+ward_8="8"
+ward_9="9"
+ward_10="10"
+ward_11="11"
+ward_12="12"
+ward_13="13"
+ward_14="14"
+ward_14="15"
+
+WARD_NO_CHOICES = [
+(ward_1, "1"),
+(ward_2, "2"),
+(ward_3, "3"),
+(ward_4, "4"),
+(ward_5, "5"),
+(ward_6, "6"),
+(ward_7, "7"),
+(ward_8, "8"),
+(ward_9, "9"),
+(ward_10,"10"),
+(ward_11,"11"),
+(ward_12,"12"),
+(ward_13,"13"),
+(ward_14,"14"),
+(ward_14,"15"),
 ]
+
+
+# # KamalBazar
+# ward_1= "Muli"
+# ward_2= "Bajuda"
+# ward_2= "Bayala"
+# ward_4= "chalsha"
+# ward_5= "kwika"
+# ward_5= "Birpath"
+# ward_6= "shera"
+# ward_7= "Dhaku"
+# Ward_8=" Mastabandali"
+# ward_10= "Ghodashain"
+
+# # Bannigadhi 
+# ward_1= "Gangra"
+# ward_2= "JanaliKot"
+# ward_3= "Bartadevi"
+# ward_4= "Timilsain"
+# ward_5= "Kalika"
+# ward_6= "Darna"
+
+# # panchadewal Binayak
+# ward_1= "Kwika"
+# ward_2= "Binayak-1"
+# ward_3= "Binayak-2"
+# ward_4= "Kalikasthan"
+# ward_5= "Layati"
+# ward_6= "Toli"
+# ward_7= "Pulletala"
+# ward_8= "Barla"
+# Ward_9= "Kalekada"
+
+# # Mellekh 
+# ward_1 = "RishiDaha"
+# ward_2= "RishiDaha"
+# ward_3= " Ward 3"
+# ward_4 = "Kuskot"
+# ward_5= "Bindebasini"
+# ward_6 = "Sodasdevi"
+# ward_7= "Nandegada"
+# ward_8= "HattiKot"
+
+# # Sanfebagar
+# ward_1 = "Baidthnath "
+# ward_2 = "Jalphadevi"
+# ward_3 = "Siddheswor"
+# ward_4 = "Mastamandu"
+# ward_5 = "Nawathana"
+# ward_6 = "Bhagyasor"
+# ward_7= "Ridikot"
+# ward_8= "Chandika"
+# ward_9= "Budhakot"
+# ward_10= "Ghugurkot"
+# ward_11= "Devishthan"
+# ward_12= "Khaptad"
+# ward_13= "Babla "
+# ward_14= "Patalkot"
+
+
+# # chaurpati
+# ward_1= "Seudi"
+# ward_2= "Sokat 1"
+# ward_3= "Sokat 2"
+# ward_4= "Payal"
+# ward_5="Lubgra "
+# ward_6= "Duni"
+# ward_7= "Marku"
+# # dhakari
+# ward_1= "Ward No"
+# ward_2= "Ward No"
+# ward_3= "Ward No"
+# ward_4= "Ward No"
+# ward_5= "Ward No"
+# ward_6= "Ward No"
+# ward_7= "Ward No"
+# ward_8= "Ward No"
+
+# # Turmakhand
+# ward_1="Ward No"
+# ward_2="Ward No"
+# ward_3="Ward No"
+# ward_4="Ward No"
+# ward_5="Ward No"
+# ward_6="Ward No"
+# ward_7="Ward No"
+# ward_8="Ward No"
+# # Ramaroshan 
+# ward_1= "Ward No"
+# ward_2= "Ward No"
+# ward_3= "Ward No"
+# ward_4= "Ward No"
+# ward_5= "Ward No"
+# ward_6= "Ward No"
+# ward_7= "Ward No"

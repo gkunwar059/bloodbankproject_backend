@@ -57,31 +57,12 @@ class AddressAdmin(admin.ModelAdmin):
     # list_display = [ 'municipality',
     #                 'ward', 'tole', 'house_number']
     # autocomplete_fields = ['province', 'district', 'municipality']
-    autocomplete_fields = ['province', 'district', 'municipality']
+    # autocomplete_fields = ['province', 'district', 'municipality']
     # raw_id_fields=['district']
     # filter_horizontal=['district']
     # search_fields = ['user__first_name', 'user__last_name']
-    search_fields = ['province', 'district', 'municipality']
+    # search_fields = ['province', 'district', 'municipality']
     
-# @admin.register(Address)
-# class AddressAdmin(admin.ModelAdmin):
-#     # list_display = ['province', 'district', 'municipality',
-#     #                 'ward', 'tole', 'house_number']
-#     list_display = ['province', 'municipality', 'ward', 'tole', 'house_number']
-#     autocomplete_fields = ['province', 'district', 'municipality']
-#     search_fields = ['province', 'district', 'municipality']
-#     # search_fields = ['province', 'district', 'municipality']
-    # filter_horizontal = ['district']
-    # raw_id_fields = ['district']
-    
-#     # def formfield_for_foreignkey(self, db_field, request, **kwargs):
-#     #     if db_field.name == "district":
-#     #         if "province" in request.GET:
-#     #             kwargs["queryset"] = District.objects.filter(province_id=request.GET.get("province"))
-#     #         else:
-#     #             kwargs["queryset"] = District.objects.none()
-#     #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
 
 
 @admin.register(Province)
