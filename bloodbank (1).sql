@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2023 at 05:20 AM
+-- Generation Time: Oct 22, 2023 at 01:49 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -241,7 +241,40 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (101, 'Can add sponsor', 26, 'add_sponsor'),
 (102, 'Can change sponsor', 26, 'change_sponsor'),
 (103, 'Can delete sponsor', 26, 'delete_sponsor'),
-(104, 'Can view sponsor', 26, 'view_sponsor');
+(104, 'Can view sponsor', 26, 'view_sponsor'),
+(105, 'Can add otp', 27, 'add_otp'),
+(106, 'Can change otp', 27, 'change_otp'),
+(107, 'Can delete otp', 27, 'delete_otp'),
+(108, 'Can view otp', 27, 'view_otp'),
+(109, 'Can add associate volunteer quick contact', 28, 'add_associatevolunteerquickcontact'),
+(110, 'Can change associate volunteer quick contact', 28, 'change_associatevolunteerquickcontact'),
+(111, 'Can delete associate volunteer quick contact', 28, 'delete_associatevolunteerquickcontact'),
+(112, 'Can view associate volunteer quick contact', 28, 'view_associatevolunteerquickcontact'),
+(113, 'Can add municipality quick contact', 29, 'add_municipalityquickcontact'),
+(114, 'Can change municipality quick contact', 29, 'change_municipalityquickcontact'),
+(115, 'Can delete municipality quick contact', 29, 'delete_municipalityquickcontact'),
+(116, 'Can view municipality quick contact', 29, 'view_municipalityquickcontact'),
+(117, 'Can add emergency donor organization quick contact', 30, 'add_emergencydonororganizationquickcontact'),
+(118, 'Can change emergency donor organization quick contact', 30, 'change_emergencydonororganizationquickcontact'),
+(119, 'Can delete emergency donor organization quick contact', 30, 'delete_emergencydonororganizationquickcontact'),
+(120, 'Can view emergency donor organization quick contact', 30, 'view_emergencydonororganizationquickcontact'),
+(121, 'Can add associate hospital quick contact', 31, 'add_associatehospitalquickcontact'),
+(122, 'Can change associate hospital quick contact', 31, 'change_associatehospitalquickcontact'),
+(123, 'Can delete associate hospital quick contact', 31, 'delete_associatehospitalquickcontact'),
+(124, 'Can view associate hospital quick contact', 31, 'view_associatehospitalquickcontact');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `core_otp`
+--
+
+CREATE TABLE `core_otp` (
+  `id` bigint(20) NOT NULL,
+  `new_password` varchar(255) DEFAULT NULL,
+  `otp_code` varchar(4) DEFAULT NULL,
+  `user_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -271,10 +304,16 @@ CREATE TABLE `core_user` (
 --
 
 INSERT INTO `core_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `is_active`, `date_joined`, `email`, `is_superviser`, `is_staff`, `is_volunteer`, `is_donor`) VALUES
-(1, 'pbkdf2_sha256$600000$P3dP0UarcKDsGMOjVbSX5V$xzd09J9jULFXQC3qPC9DekDwAod5Lv30tl7426HC+7E=', '2023-10-12 01:51:55.109174', 1, 'adminUser', 'Admin', 'User', 1, '2023-08-11 02:26:11.000000', 'mail@admin.com', 0, 1, 1, 1),
-(2, 'pbkdf2_sha256$600000$efYsmqUGGbqH3eklE5fNoS$AUk6tCOR/Eku38MjgRCVXna4r8riFhshcQiUhW9RKxg=', '2023-08-12 07:47:03.387139', 0, 'rahulR', 'Rahul', 'Rimal', 1, '2023-08-11 02:26:57.000000', 'mail@rahul.com', 0, 1, 1, 1),
-(3, 'pbkdf2_sha256$600000$zVpBqXJMHGO544Pryyzmep$R1H3I/wsqoiL0aDDSvEMa6GFu4A1jHhZ/U4fvJZhPV4=', NULL, 0, 'GaneshK', 'Ganesh', 'Kunwar', 1, '2023-08-12 03:41:45.000000', 'mail@ganesh.com', 0, 1, 1, 0),
-(5, 'pbkdf2_sha256$600000$wv024zIBSC6zSpZ30GVNpT$e3huI6c53OB85AMZGBWnVfcdVGAGiLAHNMoQEH9SFOg=', NULL, 0, 'ramayan', 'ram', '', 1, '2023-10-12 01:54:47.000000', 'ram@gmail.com', 0, 1, 0, 1);
+(9, 'pbkdf2_sha256$600000$BF8CO7rZkauUO3Xo7KaJvW$o2cdjWB7pqPWbeB85tLctNOGOjBOQSS7nTU7YgQHFHE=', '2023-10-20 16:53:47.923002', 1, 'adminU', 'Admin', 'User', 1, '2023-10-19 19:26:58.000000', 'mail@admin.com', 0, 1, 1, 0),
+(10, 'pbkdf2_sha256$600000$mdw24gDuzSb6AJVpbxa6UY$wElKxCk2u9C9ZlxfgTh+q18JwK9BUQ8FqykPkwbjSh8=', NULL, 0, 'Princejung', 'prince', 'prince', 1, '2023-10-19 19:59:31.000000', 'prince@gmail.com', 0, 0, 0, 1),
+(11, 'pbkdf2_sha256$600000$prNgHZTj2QzU1fQEbMQHOL$5PXtHJ1Oi+ssV1JqTQ2rh09D06xkEWsQraivd/0oKxA=', NULL, 0, 'shyam', 'shyam', '', 1, '2023-10-19 20:11:12.712351', 'shyam@gmail.com', 0, 0, 0, 1),
+(12, 'pbkdf2_sha256$600000$HpscmL0ocYNbH2iE7yg8Gr$/fE2ny5S6jfiatLA5u4zUoRExXknRCELZc/wZwx/pEw=', NULL, 0, 'ramesh', 'ramesh', '', 1, '2023-10-19 20:22:50.000000', 'ramesh@gmail.com', 0, 0, 1, 1),
+(13, 'pbkdf2_sha256$600000$tKPjcyRgMfhaYINuU4G4sJ$109pJbCl1lE5cjWAbGxVvn19NhcNamUamBk8jBKlX30=', NULL, 0, 'krishna', 'krishna', 'Rimal', 1, '2023-10-19 20:40:49.000000', 'gjkkunwar07@gmail.com', 0, 0, 1, 1),
+(14, 'pbkdf2_sha256$600000$NGeHsZZ8VpoqIdg6Utd5jk$lo/fG8njtKAEODb07dBDqbo+xeLhuZ+xySWCjcVDAPE=', NULL, 0, 'nitesh', 'nitesh', '', 1, '2023-10-19 20:55:24.000000', 'kunwarnitesh07@gmail.com', 1, 1, 1, 1),
+(15, 'pbkdf2_sha256$600000$qD2dujwMZekWz4NwceEj5g$nXsjNHA/sFkhPLSDE+5JifnDR+AscaFY0lRPb4uNDSY=', NULL, 0, 'Harish', 'Harish', '', 1, '2023-10-21 04:00:38.777937', 'Harish@gmail.com', 0, 0, 1, 1),
+(16, 'pbkdf2_sha256$600000$QIfl07HJHy29FWYOYlXpRk$B+PHUVIhpiGdJGGhEm8bG9ozPnJaKo4R6bqSwbr5Hm4=', NULL, 0, 'sasa', 'sasa', '', 1, '2023-10-21 06:27:56.748040', 'sasa@admin.com', 0, 0, 0, 0),
+(17, 'pbkdf2_sha256$600000$M4rQaW8mpRhbvjMIJa5K2s$7Uu5YU4q9AZOkZt+M4iIN3DbySfJgzSC46i/+/JvMmY=', NULL, 0, 'laxmi', 'laxmi', 'kunwar', 1, '2023-10-21 06:35:26.651844', 'laxmi@gmail.com', 0, 0, 0, 0),
+(18, 'pbkdf2_sha256$600000$fOUn7Jngmo5ECMPYlxOP4U$Z41gJlq7r9z52WQo6U6jIpwbIKItD3wTb8tjxrOU81I=', NULL, 0, 'abikesh', 'Abishek', '', 1, '2023-10-21 15:08:55.183663', 'abishek@gmail.com', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -287,14 +326,6 @@ CREATE TABLE `core_user_groups` (
   `user_id` bigint(20) NOT NULL,
   `group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `core_user_groups`
---
-
-INSERT INTO `core_user_groups` (`id`, `user_id`, `group_id`) VALUES
-(2, 2, 2),
-(1, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -330,90 +361,94 @@ CREATE TABLE `django_admin_log` (
 --
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
-(1, '2023-08-11 02:26:32.399601', '1', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]', 6, 1),
-(2, '2023-08-11 02:26:57.816561', '2', ' ', 1, '[{\"added\": {}}]', 6, 1),
-(3, '2023-08-11 02:27:03.602449', '2', 'Rahul Rimal', 2, '[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]', 6, 1),
-(4, '2023-08-11 02:28:43.802267', '1', 'Koshi Pradesh', 1, '[{\"added\": {}}]', 9, 1),
-(5, '2023-08-11 02:28:46.733241', '2', 'Madesh Pradesh', 1, '[{\"added\": {}}]', 9, 1),
-(6, '2023-08-11 02:28:49.520186', '3', 'Bagmati Pradesh', 1, '[{\"added\": {}}]', 9, 1),
-(7, '2023-08-11 02:28:52.288221', '4', 'Gandaki Pradesh', 1, '[{\"added\": {}}]', 9, 1),
-(8, '2023-08-11 02:28:54.959423', '5', 'Lumbini Pradesh', 1, '[{\"added\": {}}]', 9, 1),
-(9, '2023-08-11 02:28:57.852584', '6', 'Karnali Pradesh', 1, '[{\"added\": {}}]', 9, 1),
-(10, '2023-08-11 02:29:24.782355', '1', 'Kathmandu', 1, '[{\"added\": {}}]', 8, 1),
-(11, '2023-08-11 02:29:45.832899', '2', 'Banke', 1, '[{\"added\": {}}]', 8, 1),
-(12, '2023-08-11 02:29:55.534760', '1', 'Kathmandu', 1, '[{\"added\": {}}]', 11, 1),
-(13, '2023-08-11 02:30:05.480414', '2', 'Nepalgunj', 1, '[{\"added\": {}}]', 11, 1),
-(14, '2023-08-11 02:30:25.227216', '1', 'Kathmandu', 1, '[{\"added\": {}}]', 12, 1),
-(15, '2023-08-11 02:30:33.926115', '2', 'Nepalgunj', 1, '[{\"added\": {}}]', 12, 1),
-(16, '2023-08-11 02:30:57.657681', '1', '32, dfjk djf, Kathmandu, Kathmandu, Kathmandu, Bagmati Pradesh', 1, '[{\"added\": {}}]', 7, 1),
-(17, '2023-08-11 02:31:14.898175', '2', '05, Deurali Marg, Nepalgunj, Nepalgunj, Banke, Lumbini Pradesh', 1, '[{\"added\": {}}]', 7, 1),
-(18, '2023-08-11 02:31:57.012387', '1', '1 => Admin User', 1, '[{\"added\": {}}]', 10, 1),
-(19, '2023-08-11 02:32:17.144227', '2', '2 => Rahul Rimal', 1, '[{\"added\": {}}]', 10, 1),
-(20, '2023-08-11 02:34:08.187605', '1', 'UserReview object (1)', 1, '[{\"added\": {}}]', 16, 1),
-(21, '2023-08-11 02:58:42.781615', '2', 'UserReview object (2)', 1, '[{\"added\": {}}]', 16, 1),
-(22, '2023-08-11 03:00:06.749046', '3', 'UserReview object (3)', 1, '[{\"added\": {}}]', 16, 1),
-(23, '2023-08-11 13:44:37.772689', '1', 'Test Gallery', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"gallery image\", \"object\": \"GalleryImage object (1)\"}}, {\"added\": {\"name\": \"gallery image\", \"object\": \"GalleryImage object (2)\"}}, {\"added\": {\"name\": \"gallery image\", \"object\": \"GalleryImage object (3)\"}}, {\"added\": {\"name\": \"gallery image\", \"object\": \"GalleryImage object (4)\"}}]', 13, 1),
-(24, '2023-08-11 14:36:40.334106', '1', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"Is donor\"]}}]', 6, 1),
-(25, '2023-08-11 15:19:24.166961', '1', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"Is volunteer\"]}}]', 6, 1),
-(26, '2023-08-11 15:19:38.531470', '2', 'Rahul Rimal', 2, '[{\"changed\": {\"fields\": [\"Is volunteer\"]}}]', 6, 1),
-(27, '2023-08-12 03:17:44.720363', '2', 'Blood donation on Achham', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"gallery image\", \"object\": \"GalleryImage object (5)\"}}, {\"added\": {\"name\": \"gallery image\", \"object\": \"GalleryImage object (6)\"}}]', 13, 1),
-(28, '2023-08-12 03:18:50.191065', '1', 'Blog object (1)', 1, '[{\"added\": {}}]', 15, 1),
-(29, '2023-08-12 03:19:06.897349', '2', 'Blog object (2)', 1, '[{\"added\": {}}]', 15, 1),
-(30, '2023-08-12 03:19:28.197091', '3', 'Blog object (3)', 1, '[{\"added\": {}}]', 15, 1),
-(31, '2023-08-12 03:23:42.903716', '1', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"Is donor\"]}}]', 6, 1),
-(32, '2023-08-12 03:25:34.345744', '2', 'Rahul Rimal', 2, '[{\"changed\": {\"fields\": [\"Is volunteer\"]}}]', 6, 1),
-(33, '2023-08-12 03:25:44.955273', '2', 'Rahul Rimal', 2, '[{\"changed\": {\"fields\": [\"Is volunteer\"]}}]', 6, 1),
-(34, '2023-08-12 03:37:40.403853', '1', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"Permanent address\"]}}]', 10, 1),
-(35, '2023-08-12 03:38:46.543521', '1', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"BloodGroup\"]}}]', 10, 1),
-(36, '2023-08-12 03:42:46.181823', '3', 'Ganesh Kunwar', 2, '[{\"changed\": {\"fields\": [\"Is staff\"]}}]', 6, 1),
-(37, '2023-08-12 03:45:51.490447', '3', 'Ganesh Kunwar', 2, '[{\"changed\": {\"fields\": [\"Is emergency donor\"]}}]', 6, 1),
-(38, '2023-08-12 03:45:58.475028', '2', 'Rahul Rimal', 2, '[{\"changed\": {\"fields\": [\"Is emergency donor\"]}}]', 6, 1),
-(39, '2023-08-12 03:47:48.705461', '3', 'Ganesh Kunwar', 2, '[{\"changed\": {\"fields\": [\"Is donor\", \"Is emergency donor\"]}}]', 6, 1),
-(40, '2023-08-12 03:47:54.131943', '1', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"Is emergency donor\"]}}]', 6, 1),
-(41, '2023-08-12 04:01:52.573279', '1', 'EmergencyDonor object (1)', 1, '[{\"added\": {}}]', 17, 1),
-(42, '2023-08-12 04:07:00.203822', '2', 'EmergencyDonor object (2)', 1, '[{\"added\": {}}]', 17, 1),
-(43, '2023-08-12 04:35:47.312718', '3', 'EmergencyDonor object (3)', 1, '[{\"added\": {}}]', 17, 1),
-(44, '2023-08-12 04:52:57.133561', '1', 'AssociateVolunteer object (1)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"associate volunteer member\", \"object\": \"GAnesh bdr. Kunwar\"}}]', 18, 1),
-(45, '2023-08-12 04:54:09.174793', '1', 'AssociateVolunteer object (1)', 2, '[{\"added\": {\"name\": \"associate volunteer member\", \"object\": \"Suresh B.K.\"}}]', 18, 1),
-(46, '2023-08-12 04:55:11.633505', '1', 'AssociateVolunteer object (1)', 2, '[{\"added\": {\"name\": \"associate volunteer member\", \"object\": \"Manita Kc.\"}}]', 18, 1),
-(47, '2023-08-12 05:12:52.207475', '2', 'AssociateVolunteer object (2)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"associate volunteer member\", \"object\": \"Nitesh J. Kunwar\"}}]', 18, 1),
-(48, '2023-08-12 05:50:58.615179', '1', 'AssociateHospital object (1)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"associate hospital member\", \"object\": \"Mani Ram Rimal\"}}]', 20, 1),
-(49, '2023-08-12 06:29:42.727628', '1', 'EmergencyDonorOrganization object (1)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"emergency donor organization member\", \"object\": \"Suman Koirala\"}}]', 23, 1),
-(50, '2023-08-12 06:45:08.005054', '2', 'EmergencyDonorOrganization object (2)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"emergency donor organization member\", \"object\": \"fdk kjdfk\"}}]', 23, 1),
-(51, '2023-08-12 07:26:43.912811', '3', 'prince jung', 1, '[{\"added\": {}}]', 10, 1),
-(52, '2023-08-12 07:27:11.056192', '4', 'UserReview object (4)', 1, '[{\"added\": {}}]', 16, 1),
-(53, '2023-08-12 07:41:00.755365', '1', 'Superviser', 1, '[{\"added\": {}}]', 3, 1),
-(54, '2023-08-12 07:43:25.675321', '2', 'Staff', 1, '[{\"added\": {}}]', 3, 1),
-(55, '2023-08-12 07:44:33.684247', '3', 'Ganesh Kunwar', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 6, 1),
-(56, '2023-08-12 07:44:42.702617', '2', 'Rahul Rimal', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 6, 1),
-(57, '2023-08-12 07:45:01.767880', '4', 'prince jung', 2, '[{\"changed\": {\"fields\": [\"Is staff\", \"Groups\", \"Is superviser\"]}}]', 6, 1),
-(58, '2023-08-12 07:45:25.825900', '2', 'Rahul Rimal', 2, '[{\"changed\": {\"fields\": [\"password\"]}}]', 6, 1),
-(59, '2023-08-12 09:12:50.043476', '1', 'BloodDonorRequest object (1)', 3, '', 24, 1),
-(60, '2023-08-12 09:20:29.858162', '6', 'BloodDonorRequest object (6)', 3, '', 24, 1),
-(61, '2023-08-12 09:20:29.924161', '5', 'BloodDonorRequest object (5)', 3, '', 24, 1),
-(62, '2023-08-12 09:20:29.961158', '4', 'BloodDonorRequest object (4)', 3, '', 24, 1),
-(63, '2023-08-12 09:20:29.994157', '3', 'BloodDonorRequest object (3)', 3, '', 24, 1),
-(64, '2023-08-12 09:20:30.028208', '2', 'BloodDonorRequest object (2)', 3, '', 24, 1),
-(70, '2023-08-12 10:05:26.792065', '3', 'prince jung', 3, '', 10, 1),
-(75, '2023-08-12 10:12:28.875141', '7', 'BloodDonorRequest object (7)', 2, '[]', 24, 1),
-(76, '2023-08-12 10:14:24.822815', '4', 'prince jung', 3, '', 6, 1),
-(77, '2023-08-12 10:14:37.322767', '6', 'Deurali Marg, Deurali Marg, Kathmandu, Kathmandu, Kathmandu, Gandaki Pradesh', 3, '', 7, 1),
-(78, '2023-08-12 10:19:08.428095', '3', 'Ganesh Kunwar', 2, '[{\"changed\": {\"fields\": [\"password\"]}}]', 6, 1),
-(79, '2023-08-12 10:20:26.258184', '8', 'BloodDonorRequest object (8)', 2, '[]', 24, 1),
-(81, '2023-08-12 10:32:01.636833', '5', 'Ganesh Kunwar', 3, '', 10, 1),
-(82, '2023-08-12 10:32:10.357241', '1', 'VolunteerRequest object (1)', 2, '[]', 25, 1),
-(83, '2023-08-12 10:38:17.792707', '1', 'Sponsor object (1)', 1, '[{\"added\": {}}]', 26, 1),
-(84, '2023-08-12 10:38:36.455921', '2', 'Sponsor object (2)', 1, '[{\"added\": {}}]', 26, 1),
-(86, '2023-10-12 01:59:51.116968', '9', 'BloodDonorRequest object (9)', 2, '[]', 24, 1),
-(87, '2023-10-12 02:11:24.145977', '5', 'ram ', 2, '[{\"changed\": {\"fields\": [\"Is staff\"]}}]', 6, 1),
-(88, '2023-10-12 02:26:22.355961', '8', 'ram ', 2, '[{\"changed\": {\"fields\": [\"Latest donation\"]}}]', 10, 1),
-(89, '2023-10-12 02:28:10.748695', '8', 'ram ', 2, '[{\"changed\": {\"fields\": [\"Latest donation\"]}}]', 10, 1),
-(90, '2023-10-12 02:28:44.199013', '8', 'ram ', 2, '[{\"changed\": {\"fields\": [\"Latest donation\"]}}]', 10, 1),
-(91, '2023-10-12 02:29:00.394383', '8', 'ram ', 2, '[{\"changed\": {\"fields\": [\"Latest donation\"]}}]', 10, 1),
-(92, '2023-10-12 02:29:08.104392', '8', 'ram ', 2, '[{\"changed\": {\"fields\": [\"Latest donation\"]}}]', 10, 1),
-(93, '2023-10-12 02:29:24.243186', '2', 'Rahul Rimal', 2, '[{\"changed\": {\"fields\": [\"Latest donation\"]}}]', 10, 1),
-(94, '2023-10-12 02:33:23.398538', '2', 'Sponsor object (2)', 2, '[{\"changed\": {\"fields\": [\"Image\"]}}]', 26, 1),
-(95, '2023-10-12 02:33:33.362872', '1', 'Sponsor object (1)', 2, '[{\"changed\": {\"fields\": [\"Image\"]}}]', 26, 1);
+(203, '2023-10-19 19:27:22.136595', '9', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"Username\", \"First name\", \"Last name\"]}}]', 6, 9),
+(204, '2023-10-19 19:27:39.230248', '12', 'sanfebagar, sanfebagar, Ghorahi, Kathmandu, Achham, Sudurpashchim Pradesh', 3, '', 7, 9),
+(205, '2023-10-19 19:27:39.235406', '11', 'Sanfebagar, Sanfebagar, Panauti, Kathmandu, Achham, Sudurpashchim Pradesh', 3, '', 7, 9),
+(206, '2023-10-19 19:27:39.250626', '9', 'dfghjkl, dfghjkl, Panauti, Kathmandu, Kathmandu, Koshi Pradesh', 3, '', 7, 9),
+(207, '2023-10-19 19:27:39.253788', '2', '05, Deurali Marg, Ghorahi, Nepalgunj, Banke, Lumbini Pradesh', 3, '', 7, 9),
+(208, '2023-10-19 19:27:39.265150', '1', '32, dfjk djf, Panauti, Kathmandu, Kathmandu, Bagmati Pradesh', 3, '', 7, 9),
+(209, '2023-10-19 19:28:36.065497', '5', 'Ward No', 3, '', 12, 9),
+(210, '2023-10-19 19:28:36.066629', '2', 'Ghorahi', 3, '', 12, 9),
+(211, '2023-10-19 19:28:36.078656', '1', 'Panauti', 3, '', 12, 9),
+(212, '2023-10-19 19:31:21.408061', '3', 'Sankhuwasabha', 3, '', 11, 9),
+(213, '2023-10-19 19:31:21.418529', '2', 'Nepalgunj', 3, '', 11, 9),
+(214, '2023-10-19 19:31:21.423518', '1', 'Kathmandu', 3, '', 11, 9),
+(215, '2023-10-19 19:31:40.474707', '4', 'Sanfebagar', 1, '[{\"added\": {}}]', 11, 9),
+(216, '2023-10-19 19:31:49.186531', '5', 'Ramaroshan', 1, '[{\"added\": {}}]', 11, 9),
+(217, '2023-10-19 19:32:19.891561', '6', 'Ward No', 1, '[{\"added\": {}}]', 12, 9),
+(218, '2023-10-19 19:32:36.328290', '7', 'Shiddheshowor', 1, '[{\"added\": {}}]', 12, 9),
+(219, '2023-10-19 19:33:47.800349', '6', 'Ward No', 2, '[]', 12, 9),
+(220, '2023-10-19 19:34:40.096063', '7', 'Shiddheshowor', 2, '[]', 12, 9),
+(221, '2023-10-19 19:35:48.015608', '7', 'Shiddheshowor', 2, '[]', 12, 9),
+(222, '2023-10-19 19:36:37.246529', '7', 'Shiddheshowor', 2, '[]', 12, 9),
+(223, '2023-10-19 19:36:56.287196', '7', 'Shiddheshowor', 2, '[]', 12, 9),
+(224, '2023-10-19 19:38:40.272861', '7', 'Shiddheshowor', 2, '[]', 12, 9),
+(225, '2023-10-19 19:41:43.110819', '7', 'Shiddheshowor', 2, '[{\"changed\": {\"fields\": [\"Ward number\"]}}]', 12, 9),
+(226, '2023-10-19 19:41:50.098501', '6', '10', 2, '[{\"changed\": {\"fields\": [\"Ward number\"]}}]', 12, 9),
+(227, '2023-10-19 19:42:27.438001', '13', 'djfkdjf, djfkj, 10, Ramaroshan, Achham, Sudurpashchim Pradesh', 1, '[{\"added\": {}}]', 7, 9),
+(228, '2023-10-19 19:42:38.245750', '14', 'dkfj, djfkf, Shiddheshowor, Sanfebagar, Achham, Sudurpashchim Pradesh', 1, '[{\"added\": {}}]', 7, 9),
+(229, '2023-10-19 19:43:25.786489', '11', 'Admin User', 1, '[{\"added\": {}}]', 10, 9),
+(230, '2023-10-19 19:51:52.703216', '11', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"Permanent address\"]}}]', 10, 9),
+(231, '2023-10-19 19:59:33.362933', '10', ' ', 1, '[{\"added\": {}}]', 6, 9),
+(232, '2023-10-19 20:00:01.569659', '10', ' ', 2, '[]', 6, 9),
+(233, '2023-10-19 20:00:55.926954', '10', 'prince prince', 2, '[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]', 6, 9),
+(234, '2023-10-19 20:02:47.056791', '15', '12, budakot, Shiddheshowor, Sanfebagar, Achham, Sudurpashchim Pradesh', 1, '[{\"added\": {}}]', 7, 9),
+(235, '2023-10-19 20:04:59.451019', '12', 'prince prince', 1, '[{\"added\": {}}]', 10, 9),
+(236, '2023-10-19 20:05:43.528514', '6', '9', 2, '[{\"changed\": {\"fields\": [\"Municipality\", \"Ward number\"]}}]', 12, 9),
+(237, '2023-10-19 20:08:23.533736', '5', 'Ramaroshan', 2, '[]', 11, 9),
+(238, '2023-10-19 20:09:34.088775', '8', 'Rampur', 1, '[{\"added\": {}}]', 12, 9),
+(239, '2023-10-19 20:10:08.763835', '9', 'siddipur', 1, '[{\"added\": {}}]', 12, 9),
+(240, '2023-10-19 20:15:12.024721', '12', 'BloodDonorRequest object (12)', 2, '[{\"changed\": {\"fields\": [\"BloodGroup\"]}}]', 24, 9),
+(241, '2023-10-19 20:17:45.062119', '6', 'KamalBazar', 1, '[{\"added\": {}}]', 11, 9),
+(242, '2023-10-19 20:17:58.705771', '7', 'Mellekh', 1, '[{\"added\": {}}]', 11, 9),
+(243, '2023-10-19 20:18:13.499282', '8', 'Chaurpati', 1, '[{\"added\": {}}]', 11, 9),
+(244, '2023-10-19 20:19:09.562376', '10', '1', 1, '[{\"added\": {}}]', 12, 9),
+(245, '2023-10-19 20:19:33.775783', '9', 'Budakot', 2, '[{\"changed\": {\"fields\": [\"Name\"]}}]', 12, 9),
+(246, '2023-10-19 20:19:45.100692', '8', 'Babla', 2, '[{\"changed\": {\"fields\": [\"Name\"]}}]', 12, 9),
+(247, '2023-10-19 20:19:52.524965', '7', 'Shiddheshowor', 2, '[]', 12, 9),
+(248, '2023-10-19 20:20:02.020707', '9', 'Budakot', 2, '[{\"changed\": {\"fields\": [\"Ward number\"]}}]', 12, 9),
+(249, '2023-10-19 20:22:12.634916', '17', '10, Simri, 9, Sanfebagar, Achham, Sudurpashchim Pradesh', 1, '[{\"added\": {}}]', 7, 9),
+(250, '2023-10-19 20:22:52.586972', '12', ' ', 1, '[{\"added\": {}}]', 6, 9),
+(251, '2023-10-19 20:23:35.753184', '12', 'ramesh ', 2, '[{\"changed\": {\"fields\": [\"First name\"]}}]', 6, 9),
+(252, '2023-10-19 20:24:43.331425', '14', 'ramesh ', 1, '[{\"added\": {}}]', 10, 9),
+(253, '2023-10-19 20:26:37.991437', '16', 'Prabha Dayagada, Prabha Dayagada, Babla, Sanfebagar, Achham, Sudurpashchim Pradesh', 2, '[{\"changed\": {\"fields\": [\"Ward\", \"Local name\"]}}]', 7, 9),
+(254, '2023-10-19 20:27:14.590523', '8', 'Babla', 2, '[{\"changed\": {\"fields\": [\"Ward number\"]}}]', 12, 9),
+(255, '2023-10-19 20:31:30.273241', '11', '8', 1, '[{\"added\": {}}]', 12, 9),
+(256, '2023-10-19 20:31:41.124963', '12', '8', 1, '[{\"added\": {}}]', 12, 9),
+(257, '2023-10-19 20:34:40.695503', '2', 'VolunteerRequest object (2)', 2, '[]', 25, 9),
+(258, '2023-10-19 20:35:41.331854', '9', 'UserReview object (9)', 1, '[{\"added\": {}}]', 16, 9),
+(259, '2023-10-19 20:35:51.066270', '10', 'UserReview object (10)', 1, '[{\"added\": {}}]', 16, 9),
+(260, '2023-10-19 20:36:00.163947', '11', 'UserReview object (11)', 1, '[{\"added\": {}}]', 16, 9),
+(261, '2023-10-19 20:43:52.521929', '13', 'BloodDonorRequest object (13)', 2, '[]', 24, 9),
+(262, '2023-10-19 20:44:20.906662', '3', 'VolunteerRequest object (3)', 2, '[]', 25, 9),
+(263, '2023-10-19 20:44:59.858907', '13', '1', 1, '[{\"added\": {}}]', 12, 9),
+(264, '2023-10-19 20:45:32.456622', '14', '2', 1, '[{\"added\": {}}]', 12, 9),
+(265, '2023-10-19 20:51:14.806104', '13', 'krishna Rimal', 2, '[{\"changed\": {\"fields\": [\"Email\"]}}]', 6, 9),
+(266, '2023-10-19 20:55:51.251339', '14', 'nitesh ', 2, '[{\"changed\": {\"fields\": [\"Is superviser\", \"Is volunteer\", \"Is donor\"]}}]', 6, 9),
+(267, '2023-10-19 20:57:04.755265', '14', 'nitesh ', 2, '[{\"changed\": {\"fields\": [\"Is staff\"]}}]', 6, 9),
+(268, '2023-10-19 20:59:25.384424', '5', 'Lumbini Pradesh', 3, '', 9, 9),
+(269, '2023-10-19 20:59:35.576461', '4', 'Gandaki Pradesh', 3, '', 9, 9),
+(270, '2023-10-20 01:31:17.135293', '15', 'Bablaa', 1, '[{\"added\": {}}]', 12, 9),
+(271, '2023-10-20 01:59:23.013831', '13', '1', 3, '', 12, 9),
+(272, '2023-10-20 01:59:23.032684', '12', '8', 3, '', 12, 9),
+(273, '2023-10-20 01:59:36.667305', '15', 'Bablaa', 3, '', 12, 9),
+(274, '2023-10-21 03:39:51.548765', '15', 'krishna Rimal', 2, '[{\"changed\": {\"fields\": [\"Current address\"]}}]', 10, 9),
+(275, '2023-10-21 03:42:56.806318', '14', 'ramesh ', 2, '[{\"changed\": {\"fields\": [\"Current address\"]}}]', 10, 9),
+(276, '2023-10-21 03:43:02.909821', '13', 'shyam ', 2, '[{\"changed\": {\"fields\": [\"Current address\"]}}]', 10, 9),
+(277, '2023-10-21 03:43:22.021157', '11', 'Admin User', 2, '[{\"changed\": {\"fields\": [\"Current address\"]}}]', 10, 9),
+(278, '2023-10-21 04:06:45.940153', '14', 'BloodDonorRequest object (14)', 2, '[]', 24, 9),
+(279, '2023-10-21 04:36:37.563192', '15', 'BloodDonorRequest object (15)', 2, '[]', 24, 9),
+(280, '2023-10-21 04:46:32.992737', '16', 'BloodDonorRequest object (16)', 2, '[]', 24, 9),
+(281, '2023-10-21 05:21:27.324087', '17', 'BloodDonorRequest object (17)', 2, '[]', 24, 9),
+(282, '2023-10-21 05:21:42.321111', '4', 'VolunteerRequest object (4)', 2, '[]', 25, 9),
+(283, '2023-10-21 05:30:52.622923', '12', 'prince prince', 3, '', 10, 9),
+(284, '2023-10-21 05:31:02.024049', '14', 'ramesh ', 3, '', 10, 9),
+(285, '2023-10-21 05:31:02.026281', '13', 'shyam ', 3, '', 10, 9),
+(286, '2023-10-21 05:31:12.551159', '15', 'krishna Rimal', 3, '', 10, 9),
+(287, '2023-10-21 05:31:51.341523', '16', 'Harish ', 3, '', 10, 9),
+(288, '2023-10-21 05:33:23.614238', '17', 'prince prince', 1, '[{\"added\": {}}]', 10, 9),
+(289, '2023-10-21 05:36:14.663236', '17', 'prince prince', 2, '[{\"changed\": {\"fields\": [\"Latest received\"]}}]', 10, 9),
+(290, '2023-10-21 06:30:58.521974', '12', 'UserReview object (12)', 1, '[{\"added\": {}}]', 16, 9);
 
 -- --------------------------------------------------------
 
@@ -436,22 +471,27 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (3, 'auth', 'group'),
 (2, 'auth', 'permission'),
 (4, 'contenttypes', 'contenttype'),
+(27, 'core', 'otp'),
 (6, 'core', 'user'),
 (5, 'sessions', 'session'),
 (7, 'store', 'address'),
 (20, 'store', 'associatehospital'),
 (21, 'store', 'associatehospitalmember'),
+(31, 'store', 'associatehospitalquickcontact'),
 (18, 'store', 'associatevolunteer'),
 (19, 'store', 'associatevolunteermember'),
+(28, 'store', 'associatevolunteerquickcontact'),
 (15, 'store', 'blog'),
 (24, 'store', 'blooddonorrequest'),
 (8, 'store', 'district'),
 (17, 'store', 'emergencydonor'),
 (23, 'store', 'emergencydonororganization'),
 (22, 'store', 'emergencydonororganizationmember'),
+(30, 'store', 'emergencydonororganizationquickcontact'),
 (13, 'store', 'gallery'),
 (14, 'store', 'galleryimage'),
 (11, 'store', 'municipality'),
+(29, 'store', 'municipalityquickcontact'),
 (10, 'store', 'person'),
 (9, 'store', 'province'),
 (26, 'store', 'sponsor'),
@@ -531,7 +571,22 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (52, 'store', '0028_rename_temporary_address_local_name', '2023-10-12 01:59:34.318180'),
 (53, 'store', '0029_alter_userreview_review', '2023-10-12 01:59:34.397210'),
 (54, 'store', '0030_alter_province_name', '2023-10-12 01:59:34.409237'),
-(55, 'store', '0031_person_latest_donation', '2023-10-12 02:25:57.923654');
+(55, 'store', '0031_person_latest_donation', '2023-10-12 02:25:57.923654'),
+(56, 'core', '0007_otp', '2023-10-15 11:00:47.074950'),
+(57, 'store', '0032_associatevolunteerquickcontact', '2023-10-15 13:35:04.248711'),
+(58, 'store', '0033_municipalityquickcontact_and_more', '2023-10-15 14:06:40.229622'),
+(59, 'store', '0034_alter_address_district', '2023-10-16 14:36:00.090849'),
+(60, 'store', '0035_person_latest_received_alter_address_municipality_and_more', '2023-10-19 17:42:25.440687'),
+(61, 'store', '0036_alter_municipality_name_alter_ward_name_and_more', '2023-10-19 19:17:31.354153'),
+(62, 'store', '0037_alter_ward_ward_number', '2023-10-19 19:35:36.138865'),
+(63, 'store', '0038_alter_ward_ward_number_alter_ward_unique_together', '2023-10-20 02:01:14.605156'),
+(64, 'store', '0039_alter_person_current_address', '2023-10-21 03:37:38.605455'),
+(65, 'store', '0040_alter_person_workplace', '2023-10-21 03:47:26.490563'),
+(66, 'store', '0041_blooddonorrequest_current_address_and_more', '2023-10-21 04:05:51.768957'),
+(67, 'store', '0042_remove_blooddonorrequest_workplace', '2023-10-21 04:21:53.090093'),
+(68, 'store', '0043_blooddonorrequest_workplace', '2023-10-21 04:22:07.965906'),
+(69, 'store', '0002_alter_blooddonorrequest_workplace', '2023-10-21 04:26:16.378753'),
+(70, 'store', '0003_volunteerrequest_current_address_and_more', '2023-10-21 04:31:36.545050');
 
 -- --------------------------------------------------------
 
@@ -550,8 +605,9 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('ec03z0qbcn2u639sye1ieznku1p5fte6', '.eJxVjEEOwiAQAP_C2RCWssB69N43kC1QqRqalPZk_Lsh6UGvM5N5i8DHXsLR8haWJK4CxOWXTRyfuXaRHlzvq4xr3bdlkj2Rp21yXFN-3c72b1C4lb5ltIMhnx3kmMk7YpMAcQY9OG0BDTAoRcqgSxAJcNbekrbeKGWJxecLqEk1zA:1qqkrj:P-ZO16hfckjiwsbKVUiZ2rtofewu0lx-mACbVfgf5io', '2023-10-26 01:51:55.112164'),
-('vnsy5pmghtr5jzwbdgzx4of899sonbdi', '.eJxVjEEOwiAQAP_C2RCWssB69N43kC1QqRqalPZk_Lsh6UGvM5N5i8DHXsLR8haWJK4CxOWXTRyfuXaRHlzvq4xr3bdlkj2Rp21yXFN-3c72b1C4lb5ltIMhnx3kmMk7YpMAcQY9OG0BDTAoRcqgSxAJcNbekrbeKGWJxecLqEk1zA:1qUli8:P5aUwdj7HbAf2dxIw4w-lFY36i6hZqZUujDjQ_9uRfA', '2023-08-26 10:19:08.573870');
+('hl0y3g171wcpmstrfgqh8z4eyz6i5ajc', '.eJxVjDsOwyAQBe9CHSFsWFhSpvcZ0PILTiKQjF1FuXuE5CJp38y8N3N07MUdPW1ujezKLLv8bp7CM9UB4oPqvfHQ6r6tng-Fn7TzpcX0up3u30GhXkaNAqNMFpQXmmxGyIZQaSWQco4SZJgzSICM0qrJw4SazAwSjSESwD5f11s3BQ:1qtYfh:nENkPEcFhWIg6pcttncZOHBPWRsvFScB8Q4utLo71aY', '2023-11-02 19:27:05.501525'),
+('vnsy5pmghtr5jzwbdgzx4of899sonbdi', '.eJxVjEEOwiAQAP_C2RCWssB69N43kC1QqRqalPZk_Lsh6UGvM5N5i8DHXsLR8haWJK4CxOWXTRyfuXaRHlzvq4xr3bdlkj2Rp21yXFN-3c72b1C4lb5ltIMhnx3kmMk7YpMAcQY9OG0BDTAoRcqgSxAJcNbekrbeKGWJxecLqEk1zA:1qUli8:P5aUwdj7HbAf2dxIw4w-lFY36i6hZqZUujDjQ_9uRfA', '2023-08-26 10:19:08.573870'),
+('wdqjd1fie0ve1266xrro8zieumxos8dw', '.eJxVjDsOwyAQBe9CHSFsWFhSpvcZ0PILTiKQjF1FuXuE5CJp38y8N3N07MUdPW1ujezKLLv8bp7CM9UB4oPqvfHQ6r6tng-Fn7TzpcX0up3u30GhXkaNAqNMFpQXmmxGyIZQaSWQco4SZJgzSICM0qrJw4SazAwSjSESwD5f11s3BQ:1qtskt:nd96BG96ijMF0yAcRyIm6_XWiO9VS-8tWjvRaEMrWRY', '2023-11-03 16:53:47.928437');
 
 -- --------------------------------------------------------
 
@@ -575,11 +631,13 @@ CREATE TABLE `store_address` (
 --
 
 INSERT INTO `store_address` (`id`, `ward_id`, `tole`, `house_number`, `district_id`, `municipality_id`, `province_id`, `local_name`) VALUES
-(1, 1, 'dfjk djf', '32', 1, 1, 3, NULL),
-(2, 2, 'Deurali Marg', '05', 2, 2, 5, NULL),
-(7, 1, 'Deurali Marg', 'Deurali Marg', 1, 1, 3, NULL),
-(9, 1, 'dfghjkl', 'dfghjkl', 1, 1, 1, NULL),
-(10, 2, 'sanfebagar', 'sanfebagar', 1, 2, 3, NULL);
+(13, 6, 'djfkj', 'djfkdjf', 3, 5, 8, 'fjdkf'),
+(14, 7, 'djfkf', 'dkfj', 3, 4, 8, 'jdkfj'),
+(15, 7, 'budakot', '12', 3, 4, 8, 'sanfebagar'),
+(16, 8, 'Prabha Dayagada', 'Prabha Dayagada', 3, 4, 8, 'margu'),
+(17, 6, 'Simri', '10', 3, 4, 8, 'Sanfebagar'),
+(18, 10, 'budakot', 'budakot', 3, 6, 8, NULL),
+(19, 7, 'jfkdfj', 'jfkdfj', 1, 8, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -599,7 +657,8 @@ CREATE TABLE `store_associatehospital` (
 --
 
 INSERT INTO `store_associatehospital` (`id`, `name`, `address`, `contact`) VALUES
-(1, 'Civil', 'Baneshwor', '9875637265');
+(1, 'Civil', 'Baneshwor', '9875637265'),
+(2, 'Bayalpata Hospital', 'sanfebagar', '9810228669');
 
 -- --------------------------------------------------------
 
@@ -625,7 +684,35 @@ CREATE TABLE `store_associatehospitalmember` (
 --
 
 INSERT INTO `store_associatehospitalmember` (`id`, `name`, `age`, `contact`, `permanent_address`, `current_address`, `workplace`, `bloodGroup`, `profession`, `hospital_id`) VALUES
-(1, 'Mani Ram Rimal', 55, '23456789', 'djfkfj', 'dfmkdjf', 'jdkfjdkfj', 'AB+', 'doctor', 1);
+(1, 'Mani Ram Rimal', 55, '23456789', 'djfkfj', 'dfmkdjf', 'jdkfjdkfj', 'AB+', 'doctor', 1),
+(2, 'Abhiman', 22, NULL, 'ds', 'dsad', 'dad', 'O+', 'dsa', 1),
+(3, 'Ramji ram', 76, '9810228669', 'sanfebagar', 'bayalapata', 'Hospital', 'AB+', 'Hr', 2),
+(4, 'ramesh kharel', 34, '9811991199', 'ds', 'dsad', 'nayahealth', 'B+', 'senior doctor', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `store_associatehospitalquickcontact`
+--
+
+CREATE TABLE `store_associatehospitalquickcontact` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `contact` varchar(10) DEFAULT NULL,
+  `organization_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `store_associatehospitalquickcontact`
+--
+
+INSERT INTO `store_associatehospitalquickcontact` (`id`, `name`, `contact`, `organization_id`) VALUES
+(1, 'Rajesh Swar', '9810229669', 2),
+(2, 'Ramesh Khanal', '9810228669', 2),
+(3, 'Purna Bahadur Kunwar', '9865768537', 2),
+(4, 'Krishna Rimal', '9865768537', 1),
+(5, 'Upa Mayor', '9810228669', 1),
+(6, 'Rajendra kunwar', '9865768537', 1);
 
 -- --------------------------------------------------------
 
@@ -645,8 +732,9 @@ CREATE TABLE `store_associatevolunteer` (
 --
 
 INSERT INTO `store_associatevolunteer` (`id`, `name`, `address`, `contact`) VALUES
-(1, 'XYZ', 'Sanfebagar', '9876453798'),
-(2, 'CYP Youths', 'Srikot', '3456789');
+(3, 'Mega Bank', 'sanfebagar', NULL),
+(4, 'Rapti', 'sanfebagar', '9810228669'),
+(5, 'NICASIA', 'bds', '9810228669');
 
 -- --------------------------------------------------------
 
@@ -672,10 +760,37 @@ CREATE TABLE `store_associatevolunteermember` (
 --
 
 INSERT INTO `store_associatevolunteermember` (`id`, `name`, `age`, `contact`, `permanent_address`, `current_address`, `workplace`, `bloodGroup`, `profession`, `organization_id`) VALUES
-(1, 'GAnesh bdr. Kunwar', 34, '7645367586', 'Achham', 'Ktm', 'Ktm', 'B-', 'Businessman', 1),
-(2, 'Suresh B.K.', 33, '75678989', 'Dailekh', 'Npj', 'Npj', 'A+', 'Student', 1),
-(3, 'Manita Kc.', 23, '456789', 'kfdjf', 'djfkdfjk', 'dkjfd', 'B+', 'Student', 1),
-(4, 'Nitesh J. Kunwar', 18, '234567899', 'fghjkl', 'fghjkl', 'ghjkll', 'A-', 'ghjkl', 2);
+(5, 'Ramesh Chaudary', 34, '8798764536', 'sanfebagar', 'sanfebafar', 'sange', 'A+', 'Banker', 3),
+(6, 'Ramshah', 23, '8798764536', 'kathamandu', 'ewew', 'dsds', 'O+', 'student', 4),
+(7, 'Abishek', 34, '8888888888', 'malikabazar', 'lalitpur', 'ramechapp', 'B', 'dds', 4),
+(8, 'Ganesh Kunwar', 20, '8798764536', 'sanfebagar', 'sanfebafar', 'sangrilla', 'O+', 'student', 5),
+(9, 'Ashish chand', 22, '9810228669', 'malikabazar', 'sanfu', 'ramechapp', 'B+', 'banker', 5),
+(10, 'susma bhandari', 24, '9865768543', 'lalitpur', 'kathamandu', 'Cg net', 'AB+', 'ramosaha', 5),
+(11, 'abishek khadka', 23, '4312321212', 'samjhana', 'sbsbsb', 'sss', 'A+', 'sdds', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `store_associatevolunteerquickcontact`
+--
+
+CREATE TABLE `store_associatevolunteerquickcontact` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `contact` varchar(10) DEFAULT NULL,
+  `organization_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `store_associatevolunteerquickcontact`
+--
+
+INSERT INTO `store_associatevolunteerquickcontact` (`id`, `name`, `contact`, `organization_id`) VALUES
+(1, 'Ganesh Kunwar', '9808876876', 5),
+(2, 'Ganesh khakdka', '9876543345', 5),
+(3, 'Nitesh Kunwar', '9810228667', 3),
+(4, 'ramjiram', '9876543345', 5),
+(5, 'ramesh kharel', '9810228669', 4);
 
 -- --------------------------------------------------------
 
@@ -691,15 +806,6 @@ CREATE TABLE `store_blog` (
   `created_at` datetime(6) NOT NULL,
   `author_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `store_blog`
---
-
-INSERT INTO `store_blog` (`id`, `title`, `content`, `thumbnail`, `created_at`, `author_id`) VALUES
-(1, 'Test Blog', 'em Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem', 'blog/thumbnails/WhatsApp_Image_2023-03-21_at_4.41.00_PM.jpeg', '2023-08-12 03:18:50.110065', 2),
-(2, 'Test 2', 'em Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem', 'blog/thumbnails/prasad2_at2hj5R.jpg', '2023-08-12 03:19:06.880712', 2),
-(3, 'TEst 3', 'em Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem', 'blog/thumbnails/bulakhi.jpg', '2023-08-12 03:19:28.187105', 1);
 
 -- --------------------------------------------------------
 
@@ -720,7 +826,9 @@ CREATE TABLE `store_blooddonorrequest` (
   `municipality_id` bigint(20) NOT NULL,
   `province_id` bigint(20) NOT NULL,
   `ward_id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL
+  `user_id` bigint(20) NOT NULL,
+  `current_address` varchar(100) DEFAULT NULL,
+  `workplace` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -741,7 +849,8 @@ CREATE TABLE `store_district` (
 
 INSERT INTO `store_district` (`id`, `name`, `province_id`) VALUES
 (1, 'Kathmandu', 3),
-(2, 'Banke', 5);
+(4, 'Lalitpur', 3),
+(3, 'Achham', 8);
 
 -- --------------------------------------------------------
 
@@ -759,8 +868,8 @@ CREATE TABLE `store_emergencydonororganization` (
 --
 
 INSERT INTO `store_emergencydonororganization` (`id`, `profession`) VALUES
-(1, 'Army'),
-(2, 'APF');
+(1, 'Hari'),
+(2, 'Ram');
 
 -- --------------------------------------------------------
 
@@ -783,7 +892,31 @@ CREATE TABLE `store_emergencydonororganizationmember` (
 
 INSERT INTO `store_emergencydonororganizationmember` (`id`, `name`, `age`, `contact`, `bloodGroup`, `organization_id`) VALUES
 (1, 'Suman Koirala', 44, '56789', 'B-', 1),
-(2, 'fdk kjdfk', 32, '567890-', 'AB-', 2);
+(2, 'Ganesh Kunwar', 32, '9810228669', 'AB-', 2),
+(3, 'Roshan Kunwar', 23, '9810228669', 'B+', 2),
+(4, 'Abishek yadhav', 11, NULL, 'A+', 1),
+(5, 'Harish bhatta', 11, '76767676', 'O+', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `store_emergencydonororganizationquickcontact`
+--
+
+CREATE TABLE `store_emergencydonororganizationquickcontact` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `contact` varchar(10) DEFAULT NULL,
+  `organization_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `store_emergencydonororganizationquickcontact`
+--
+
+INSERT INTO `store_emergencydonororganizationquickcontact` (`id`, `name`, `contact`, `organization_id`) VALUES
+(1, 'Birendra kunwar', '9810229778', 2),
+(2, 'Mahendra kunwar', '9810229778', 1);
 
 -- --------------------------------------------------------
 
@@ -847,8 +980,24 @@ CREATE TABLE `store_municipality` (
 --
 
 INSERT INTO `store_municipality` (`id`, `name`, `district_id`) VALUES
-(1, 'Kathmandu', 1),
-(2, 'Nepalgunj', 2);
+(8, 'Chaurpati', 3),
+(6, 'KamalBazar', 3),
+(7, 'Mellekh', 3),
+(5, 'Ramaroshan', 3),
+(4, 'Sanfebagar', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `store_municipalityquickcontact`
+--
+
+CREATE TABLE `store_municipalityquickcontact` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `contact` varchar(10) DEFAULT NULL,
+  `organization_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -862,23 +1011,22 @@ CREATE TABLE `store_person` (
   `bloodGroup` varchar(5) NOT NULL,
   `profession` varchar(255) DEFAULT NULL,
   `image` varchar(100) DEFAULT NULL,
-  `current_address_id` bigint(20) NOT NULL,
+  `current_address` varchar(100) DEFAULT NULL,
   `permanent_address_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
-  `workplace_id` bigint(20) NOT NULL,
+  `workplace` varchar(100) DEFAULT NULL,
   `dob` datetime(6) NOT NULL,
-  `latest_donation` date DEFAULT NULL
+  `latest_donation` date DEFAULT NULL,
+  `latest_received` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `store_person`
 --
 
-INSERT INTO `store_person` (`id`, `contact`, `bloodGroup`, `profession`, `image`, `current_address_id`, `permanent_address_id`, `user_id`, `workplace_id`, `dob`, `latest_donation`) VALUES
-(1, '9868957429', 'A-', 'Businessman', 'person/images/prasad2.jpg', 1, 2, 1, 1, '2023-08-12 10:10:45.171213', NULL),
-(2, '9868957429', 'B+', 'Actor', 'person/images/bulakhi_9MFZZb2.jpg', 1, 2, 2, 1, '2023-08-12 10:10:45.000000', '2023-10-12'),
-(7, '9876564756', 'AB-', 'Army', 'volunteerrequest/images/bulakhi.jpg', 9, 9, 3, 9, '2023-08-22 00:00:00.000000', NULL),
-(8, '9810228669', 'AB+', 'student', 'donerrequest/images/IMG_0459.JPG', 10, 10, 5, 10, '2018-05-12 00:00:00.000000', '2023-10-12');
+INSERT INTO `store_person` (`id`, `contact`, `bloodGroup`, `profession`, `image`, `current_address`, `permanent_address_id`, `user_id`, `workplace`, `dob`, `latest_donation`, `latest_received`) VALUES
+(11, '2322222323', 'o+', 'student', 'person/images/IMG_0459.JPG', 'Chabahill', 14, 9, '13', '2023-10-19 19:42:50.000000', '2023-10-19', NULL),
+(17, '9810228669', 'O+', 'doctor', 'person/images/download_yx2ryFB.jpeg', 'kalopul hon hai', 16, 10, 'sanfebagar', '2023-10-21 05:32:26.000000', '2023-10-21', NULL);
 
 -- --------------------------------------------------------
 
@@ -897,11 +1045,9 @@ CREATE TABLE `store_province` (
 
 INSERT INTO `store_province` (`id`, `name`) VALUES
 (3, 'Bagmati Pradesh'),
-(4, 'Gandaki Pradesh'),
-(6, 'Karnali Pradesh'),
 (1, 'Koshi Pradesh'),
-(5, 'Lumbini Pradesh'),
-(2, 'Madesh Pradesh');
+(2, 'Madesh Pradesh'),
+(8, 'Sudurpashchim Pradesh');
 
 -- --------------------------------------------------------
 
@@ -921,8 +1067,10 @@ CREATE TABLE `store_sponsor` (
 --
 
 INSERT INTO `store_sponsor` (`id`, `name`, `link`, `image`) VALUES
-(1, 'Hotel Samarpan', 'https://chat.openai.com/', 'sponsors/images/IMG_0494.jpg'),
-(2, 'Test sponsor', 'https://chat.openai.com/', 'sponsors/images/IMG_0459.JPG');
+(10, 'hh', 'h', 'sponsors/images/361342672_236277422569617_6115675314873081145_n_3CFGMuE.jpg'),
+(11, 'hello', 'hee', 'sponsors/images/361342672_236277422569617_6115675314873081145_n_nfZVrY8.jpg'),
+(12, 'dsds', 'dsada', 'sponsors/images/361634773_150029978109307_4451900604874077437_n.jpg'),
+(13, 'Ganesh kunwar', 'ddsa', 'sponsors/images/361634773_150029978109307_4451900604874077437_n_q9YmgsE.jpg');
 
 -- --------------------------------------------------------
 
@@ -941,9 +1089,8 @@ CREATE TABLE `store_userreview` (
 --
 
 INSERT INTO `store_userreview` (`id`, `review`, `person_id`) VALUES
-(1, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distrib', 2),
-(2, 'This is a test review Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a se', 2),
-(3, 'This is a test review', 2);
+(11, 'Used to make professional-quality documents, letters, reports, etc., MS Word is a word processor developed by Microsoft. It has advanced features which allow you to format and edit your files and docu', 11),
+(12, 'A grid-connected, 100kW photovoltaic array, installed across all south-facing roofs, generates more energy on site than the campus requires. Passive heating and cooling are also essential to the desig', 17);
 
 -- --------------------------------------------------------
 
@@ -964,8 +1111,17 @@ CREATE TABLE `store_volunteerrequest` (
   `municipality_id` bigint(20) NOT NULL,
   `province_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
-  `ward_id` bigint(20) NOT NULL
+  `ward_id` bigint(20) NOT NULL,
+  `current_address` varchar(100) DEFAULT NULL,
+  `workplace` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `store_volunteerrequest`
+--
+
+INSERT INTO `store_volunteerrequest` (`id`, `name`, `dob`, `contact`, `tole`, `bloodGroup`, `profession`, `image`, `district_id`, `municipality_id`, `province_id`, `user_id`, `ward_id`, `current_address`, `workplace`) VALUES
+(5, 'ramesh', '2023-10-12 00:00:00.000000', '9810228669', 'dsds', 'B+', 'ssssssssssss', 'volunteerrequest/images/IMG_0494_5rhVkNd.jpg', 3, 4, 8, 16, 14, 'setopul,kathmandu', 'zzzzzzzzzzzz');
 
 -- --------------------------------------------------------
 
@@ -975,8 +1131,8 @@ CREATE TABLE `store_volunteerrequest` (
 
 CREATE TABLE `store_ward` (
   `id` bigint(20) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `ward_number` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `ward_number` varchar(50) NOT NULL,
   `municipality_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -985,8 +1141,13 @@ CREATE TABLE `store_ward` (
 --
 
 INSERT INTO `store_ward` (`id`, `name`, `ward_number`, `municipality_id`) VALUES
-(1, 'Kathmandu', 32, 1),
-(2, 'Nepalgunj', 11, 2);
+(6, NULL, '9', 4),
+(7, 'Shiddheshowor', '6', 4),
+(8, 'Babla', '15', 4),
+(9, 'Budakot', '7', 4),
+(10, NULL, '1', 8),
+(11, NULL, '8', 7),
+(14, NULL, '2', 6);
 
 --
 -- Indexes for dumped tables
@@ -1013,6 +1174,13 @@ ALTER TABLE `auth_group_permissions`
 ALTER TABLE `auth_permission`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`);
+
+--
+-- Indexes for table `core_otp`
+--
+ALTER TABLE `core_otp`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `core_user`
@@ -1090,6 +1258,13 @@ ALTER TABLE `store_associatehospitalmember`
   ADD KEY `store_associatehospi_hospital_id_ad58b196_fk_store_ass` (`hospital_id`);
 
 --
+-- Indexes for table `store_associatehospitalquickcontact`
+--
+ALTER TABLE `store_associatehospitalquickcontact`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `store_associatehospi_organization_id_8569fad6_fk_store_ass` (`organization_id`);
+
+--
 -- Indexes for table `store_associatevolunteer`
 --
 ALTER TABLE `store_associatevolunteer`
@@ -1101,6 +1276,13 @@ ALTER TABLE `store_associatevolunteer`
 ALTER TABLE `store_associatevolunteermember`
   ADD PRIMARY KEY (`id`),
   ADD KEY `store_associatevolun_organization_id_80262e47_fk_store_ass` (`organization_id`);
+
+--
+-- Indexes for table `store_associatevolunteerquickcontact`
+--
+ALTER TABLE `store_associatevolunteerquickcontact`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `store_associatevolun_organization_id_7fc0c415_fk_store_ass` (`organization_id`);
 
 --
 -- Indexes for table `store_blog`
@@ -1141,6 +1323,13 @@ ALTER TABLE `store_emergencydonororganizationmember`
   ADD KEY `store_emergencydonor_organization_id_e2d2d4bb_fk_store_eme` (`organization_id`);
 
 --
+-- Indexes for table `store_emergencydonororganizationquickcontact`
+--
+ALTER TABLE `store_emergencydonororganizationquickcontact`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `store_emergencydonor_organization_id_c92288dd_fk_store_eme` (`organization_id`);
+
+--
 -- Indexes for table `store_gallery`
 --
 ALTER TABLE `store_gallery`
@@ -1161,14 +1350,19 @@ ALTER TABLE `store_municipality`
   ADD UNIQUE KEY `store_municipality_district_id_name_4e06dd43_uniq` (`district_id`,`name`);
 
 --
+-- Indexes for table `store_municipalityquickcontact`
+--
+ALTER TABLE `store_municipalityquickcontact`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `store_municipalityqu_organization_id_7ec0d726_fk_store_mun` (`organization_id`);
+
+--
 -- Indexes for table `store_person`
 --
 ALTER TABLE `store_person`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user_id` (`user_id`),
-  ADD KEY `store_person_current_address_id_34d59469` (`current_address_id`),
-  ADD KEY `store_person_permanent_address_id_7667c5d9` (`permanent_address_id`),
-  ADD KEY `store_person_workplace_id_7a86dc37` (`workplace_id`);
+  ADD KEY `store_person_permanent_address_id_7667c5d9` (`permanent_address_id`);
 
 --
 -- Indexes for table `store_province`
@@ -1206,6 +1400,8 @@ ALTER TABLE `store_volunteerrequest`
 --
 ALTER TABLE `store_ward`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `store_ward_ward_number_90fa4bef_uniq` (`ward_number`),
+  ADD UNIQUE KEY `store_ward_name_ward_number_219bc01e_uniq` (`name`,`ward_number`),
   ADD KEY `store_ward_municipality_id_f20b768b_fk_store_municipality_id` (`municipality_id`);
 
 --
@@ -1228,13 +1424,19 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+
+--
+-- AUTO_INCREMENT for table `core_otp`
+--
+ALTER TABLE `core_otp`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `core_user`
 --
 ALTER TABLE `core_user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `core_user_groups`
@@ -1252,49 +1454,61 @@ ALTER TABLE `core_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `store_address`
 --
 ALTER TABLE `store_address`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `store_associatehospital`
 --
 ALTER TABLE `store_associatehospital`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `store_associatehospitalmember`
 --
 ALTER TABLE `store_associatehospitalmember`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `store_associatehospitalquickcontact`
+--
+ALTER TABLE `store_associatehospitalquickcontact`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `store_associatevolunteer`
 --
 ALTER TABLE `store_associatevolunteer`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `store_associatevolunteermember`
 --
 ALTER TABLE `store_associatevolunteermember`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `store_associatevolunteerquickcontact`
+--
+ALTER TABLE `store_associatevolunteerquickcontact`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `store_blog`
@@ -1306,13 +1520,13 @@ ALTER TABLE `store_blog`
 -- AUTO_INCREMENT for table `store_blooddonorrequest`
 --
 ALTER TABLE `store_blooddonorrequest`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `store_district`
 --
 ALTER TABLE `store_district`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `store_emergencydonororganization`
@@ -1324,6 +1538,12 @@ ALTER TABLE `store_emergencydonororganization`
 -- AUTO_INCREMENT for table `store_emergencydonororganizationmember`
 --
 ALTER TABLE `store_emergencydonororganizationmember`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `store_emergencydonororganizationquickcontact`
+--
+ALTER TABLE `store_emergencydonororganizationquickcontact`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -1342,43 +1562,49 @@ ALTER TABLE `store_galleryimage`
 -- AUTO_INCREMENT for table `store_municipality`
 --
 ALTER TABLE `store_municipality`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `store_municipalityquickcontact`
+--
+ALTER TABLE `store_municipalityquickcontact`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `store_person`
 --
 ALTER TABLE `store_person`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `store_province`
 --
 ALTER TABLE `store_province`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `store_sponsor`
 --
 ALTER TABLE `store_sponsor`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `store_userreview`
 --
 ALTER TABLE `store_userreview`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `store_volunteerrequest`
 --
 ALTER TABLE `store_volunteerrequest`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `store_ward`
 --
 ALTER TABLE `store_ward`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -1396,6 +1622,12 @@ ALTER TABLE `auth_group_permissions`
 --
 ALTER TABLE `auth_permission`
   ADD CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
+
+--
+-- Constraints for table `core_otp`
+--
+ALTER TABLE `core_otp`
+  ADD CONSTRAINT `core_otp_user_id_20a9e364_fk_core_user_id` FOREIGN KEY (`user_id`) REFERENCES `core_user` (`id`);
 
 --
 -- Constraints for table `core_user_groups`
@@ -1434,10 +1666,22 @@ ALTER TABLE `store_associatehospitalmember`
   ADD CONSTRAINT `store_associatehospi_hospital_id_ad58b196_fk_store_ass` FOREIGN KEY (`hospital_id`) REFERENCES `store_associatehospital` (`id`);
 
 --
+-- Constraints for table `store_associatehospitalquickcontact`
+--
+ALTER TABLE `store_associatehospitalquickcontact`
+  ADD CONSTRAINT `store_associatehospi_organization_id_8569fad6_fk_store_ass` FOREIGN KEY (`organization_id`) REFERENCES `store_associatehospital` (`id`);
+
+--
 -- Constraints for table `store_associatevolunteermember`
 --
 ALTER TABLE `store_associatevolunteermember`
   ADD CONSTRAINT `store_associatevolun_organization_id_80262e47_fk_store_ass` FOREIGN KEY (`organization_id`) REFERENCES `store_associatevolunteer` (`id`);
+
+--
+-- Constraints for table `store_associatevolunteerquickcontact`
+--
+ALTER TABLE `store_associatevolunteerquickcontact`
+  ADD CONSTRAINT `store_associatevolun_organization_id_7fc0c415_fk_store_ass` FOREIGN KEY (`organization_id`) REFERENCES `store_associatevolunteer` (`id`);
 
 --
 -- Constraints for table `store_blog`
@@ -1468,6 +1712,12 @@ ALTER TABLE `store_emergencydonororganizationmember`
   ADD CONSTRAINT `store_emergencydonor_organization_id_e2d2d4bb_fk_store_eme` FOREIGN KEY (`organization_id`) REFERENCES `store_emergencydonororganization` (`id`);
 
 --
+-- Constraints for table `store_emergencydonororganizationquickcontact`
+--
+ALTER TABLE `store_emergencydonororganizationquickcontact`
+  ADD CONSTRAINT `store_emergencydonor_organization_id_c92288dd_fk_store_eme` FOREIGN KEY (`organization_id`) REFERENCES `store_emergencydonororganization` (`id`);
+
+--
 -- Constraints for table `store_galleryimage`
 --
 ALTER TABLE `store_galleryimage`
@@ -1480,13 +1730,17 @@ ALTER TABLE `store_municipality`
   ADD CONSTRAINT `store_municipality_district_id_04c7ab2f_fk_store_district_id` FOREIGN KEY (`district_id`) REFERENCES `store_district` (`id`);
 
 --
+-- Constraints for table `store_municipalityquickcontact`
+--
+ALTER TABLE `store_municipalityquickcontact`
+  ADD CONSTRAINT `store_municipalityqu_organization_id_7ec0d726_fk_store_mun` FOREIGN KEY (`organization_id`) REFERENCES `store_municipality` (`id`);
+
+--
 -- Constraints for table `store_person`
 --
 ALTER TABLE `store_person`
-  ADD CONSTRAINT `store_person_current_address_id_34d59469_fk_store_address_id` FOREIGN KEY (`current_address_id`) REFERENCES `store_address` (`id`),
   ADD CONSTRAINT `store_person_permanent_address_id_7667c5d9_fk_store_address_id` FOREIGN KEY (`permanent_address_id`) REFERENCES `store_address` (`id`),
-  ADD CONSTRAINT `store_person_user_id_2892ef74_fk_core_user_id` FOREIGN KEY (`user_id`) REFERENCES `core_user` (`id`),
-  ADD CONSTRAINT `store_person_workplace_id_7a86dc37_fk_store_address_id` FOREIGN KEY (`workplace_id`) REFERENCES `store_address` (`id`);
+  ADD CONSTRAINT `store_person_user_id_2892ef74_fk_core_user_id` FOREIGN KEY (`user_id`) REFERENCES `core_user` (`id`);
 
 --
 -- Constraints for table `store_userreview`

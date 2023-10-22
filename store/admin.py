@@ -175,7 +175,7 @@ class AssociateVolunteerAdmin(admin.ModelAdmin):
 @admin.register(BloodDonorRequest)
 class BloodDonorRequestAdmin(admin.ModelAdmin):
     list_display = ['id', 'name',  'dob', 'contact', 'tole', 'bloodGroup',
-                    'profession', 'province', 'district', 'municipality', 'ward', 'image']
+                    'profession', 'workplace', 'province', 'district', 'municipality', 'ward', 'current_address', 'image']
 
     def response_change(self, request, obj):
         if "_accept-request" in request.POST:
@@ -202,9 +202,9 @@ class BloodDonorRequestAdmin(admin.ModelAdmin):
 
 
 @admin.register(VolunteerRequest)
-class BloodDonorRequestAdmin(admin.ModelAdmin):
+class VolunteerRequestAdmin(admin.ModelAdmin):
     list_display = ['id', 'name',  'dob', 'contact', 'tole', 'bloodGroup',
-                    'profession', 'province', 'district', 'municipality', 'ward', 'image']
+                    'profession', 'workplace', 'province', 'district', 'municipality', 'ward', 'current_address', 'image']
 
     def response_change(self, request, obj):
         if "_accept-request" in request.POST:

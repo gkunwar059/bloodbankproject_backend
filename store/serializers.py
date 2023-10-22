@@ -34,8 +34,8 @@ class AddressSerializer(serializers.ModelSerializer):
 class PersonSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     permanent_address = AddressSerializer()
-    current_address = AddressSerializer()
-    workplace = AddressSerializer()
+    # current_address = AddressSerializer()
+    # workplace = AddressSerializer()
     user = serializers.PrimaryKeyRelatedField(
         queryset=get_user_model().objects.all(),  # Queryset for user objects
         write_only=True,  # Exclude 'user' during serialization
@@ -214,7 +214,7 @@ class BloodDonorRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = BloodDonorRequest
         fields = ['id', 'user', 'name',  'dob', 'contact', 'tole', 'bloodGroup',
-                  'profession', 'province', 'district', 'municipality', 'ward', 'image']
+                  'profession', 'workplace', 'province', 'district', 'municipality', 'ward', 'current_address', 'image']
 
 
 class VolunteerRequestSerializer(serializers.ModelSerializer):
@@ -222,7 +222,7 @@ class VolunteerRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = VolunteerRequest
         fields = ['id', 'user', 'name',  'dob', 'contact', 'tole', 'bloodGroup',
-                  'profession', 'province', 'district', 'municipality', 'ward', 'image']
+                  'profession', 'workplace', 'province', 'district', 'municipality', 'ward', 'current_address', 'image']
 
 
 class SponsorSerializer(serializers.ModelSerializer):

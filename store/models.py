@@ -113,10 +113,16 @@ class Person(models.Model):
     contact = models.CharField(max_length=10, null=True, blank=True)
     permanent_address = models.ForeignKey(
         Address, on_delete=models.PROTECT, related_name='permanent_address')
-    current_address = models.ForeignKey(
-        Address, on_delete=models.PROTECT, related_name='current_address')
-    workplace = models.ForeignKey(
-        Address, on_delete=models.PROTECT, related_name='workplace_address')
+    # current_address = models.ForeignKey(
+    #     Address, on_delete=models.PROTECT, related_name='current_address')
+    current_address = models.CharField(
+        max_length=100, null=True, blank=True
+    )
+    # workplace = models.ForeignKey(
+    #     Address, on_delete=models.PROTECT, related_name='workplace_address')
+    workplace = models.CharField(
+        max_length=100, null=True, blank=True
+    )
     bloodGroup = models.CharField(max_length=5)
     profession = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(
@@ -317,10 +323,15 @@ class BloodDonorRequest(models.Model):
     tole = models.CharField(max_length=255)
     bloodGroup = models.CharField(max_length=5)
     profession = models.CharField(max_length=255, blank=True, null=True)
+    workplace = models.CharField(max_length=255, blank=True, null=True)
     province = models.ForeignKey(Province, on_delete=models.CASCADE)
     district = models.ForeignKey(District, on_delete=models.CASCADE)
     municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE)
     ward = models.ForeignKey(Ward, on_delete=models.CASCADE)
+    
+    current_address = models.CharField(
+        max_length=100, null=True, blank=True
+    )
     image = models.ImageField(
         upload_to='donerrequest/images', null=True, blank=True)
 
@@ -334,10 +345,14 @@ class VolunteerRequest(models.Model):
     tole = models.CharField(max_length=255)
     bloodGroup = models.CharField(max_length=5)
     profession = models.CharField(max_length=255, blank=True, null=True)
+    workplace = models.CharField(max_length=255, blank=True, null=True)
     province = models.ForeignKey(Province, on_delete=models.CASCADE)
     district = models.ForeignKey(District, on_delete=models.CASCADE)
     municipality = models.ForeignKey(Municipality, on_delete=models.CASCADE)
     ward = models.ForeignKey(Ward, on_delete=models.CASCADE)
+    current_address = models.CharField(
+        max_length=100, null=True, blank=True
+    )
     image = models.ImageField(
         upload_to='volunteerrequest/images', null=True, blank=True)
 
