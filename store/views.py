@@ -65,7 +65,21 @@ class PersonViewSet(ModelViewSet):
         donors = Person.objects.all().filter(
             latest_donation__gte=past_datetime, user__is_donor=True)
         serializer = PersonSerializer(donors, many=True)
-        return Response(serializer.data)
+        result = serializer.data
+        # print(result)
+        # print(list(result) )
+        recent_hospital_donors=AssociateHospitalMember.objects.filter( latest_donation__gte=past_datetime).values()
+        recent_hospital_donors_data = AssociateHospitalMemberSerializer(recent_hospital_donors, many=True).data
+        # recent_emergency_donors=EmergencyDonorOrganizationMember.objects.filter( latest_donation__gte=past_datetime).values()
+        recent_associate_donors=AssociateVolunteerMember.objects.filter( latest_donation__gte=past_datetime).values()
+        recent_associate_donors_data = AssociateVolunteerMemberSerializer(recent_associate_donors, many=True).data
+        recent_emergency_donors= EmergencyDonorOrganizationMember.objects.filter( latest_donation__gte=past_datetime)
+        recent_emergency_donors_data = EmergencyDonorOrganizationMemberSerializer(recent_emergency_donors, many=True).data
+        
+        result = result + recent_hospital_donors_data + recent_emergency_donors_data + recent_associate_donors_data
+        
+      
+        return Response(result)
 
     @action(detail=False, methods=['GET'])
     def get_milestones(self, request):

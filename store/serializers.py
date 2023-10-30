@@ -149,7 +149,7 @@ class EmergencyDonorOrganizationMemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EmergencyDonorOrganizationMember
-        fields = ['id', 'name', 'age', 'contact', 'bloodGroup']
+        fields = ['id', 'name', 'age', 'contact', 'bloodGroup','current_address','workplace','latest_received','latest_donation']
         
 
 class EmergencyDonorOrganizationQuickContactSerializer(serializers.ModelSerializer):
@@ -167,11 +167,11 @@ class EmergencyDonorOrganizationSerializer(serializers.ModelSerializer):
 
 
 class AssociateVolunteerMemberSerializer(serializers.ModelSerializer):
-
+    permanent_address = serializers.CharField(write_only=True)
     class Meta:
         model = AssociateVolunteerMember
         fields = ['id', 'name', 'age', 'contact', 'bloodGroup',
-                  'profession', 'permanent_address', 'current_address', 'workplace']
+                   'permanent_address', 'current_address', 'workplace','latest_received','latest_donation']
         
 class AssociateVolunteerQickConactSerializer(serializers.ModelSerializer):
 
@@ -188,11 +188,11 @@ class AssociateVolunteerSerializer(serializers.ModelSerializer):
 
 
 class AssociateHospitalMemberSerializer(serializers.ModelSerializer):
-
+    permanent_address = serializers.CharField(write_only=True)
     class Meta:
         model = AssociateHospitalMember
         fields = ['id', 'name', 'age', 'contact', 'bloodGroup',
-                  'profession', 'permanent_address', 'current_address', 'workplace']
+                  'profession', 'permanent_address', 'current_address', 'workplace','latest_received','latest_donation']
 
 
 class AssociateHospitalQuickContactSerializer(serializers.ModelSerializer):

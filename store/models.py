@@ -242,9 +242,11 @@ class EmergencyDonorOrganizationMember(models.Model):
     age = models.PositiveIntegerField()
     contact = models.CharField(max_length=10, null=True, blank=True)
     # permanent_address = models.CharField(max_length=255)
-    # current_address = models.CharField(max_length=255)
-    # workplace = models.CharField(max_length=255)
+    current_address = models.CharField(max_length=255)
+    workplace = models.CharField(max_length=255)
     bloodGroup = models.CharField(max_length=5)
+    latest_donation = models.DateField(null=True, blank=True)
+    latest_received = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -275,7 +277,9 @@ class AssociateVolunteerMember(models.Model):
     current_address = models.CharField(max_length=255)
     workplace = models.CharField(max_length=255)
     bloodGroup = models.CharField(max_length=5)
-    profession = models.CharField(max_length=255, blank=True, null=True)
+    latest_donation = models.DateField(null=True, blank=True)
+    latest_received = models.DateField(null=True, blank=True)
+    
 
     def __str__(self):
         return f"{self.name}"
@@ -307,6 +311,9 @@ class AssociateHospitalMember(models.Model):
     workplace = models.CharField(max_length=255)
     bloodGroup = models.CharField(max_length=5)
     profession = models.CharField(max_length=255, blank=True, null=True)
+    latest_donation = models.DateField(null=True, blank=True)
+    latest_received = models.DateField(null=True, blank=True)
+    
 
     def __str__(self):
         return f"{self.name}"
