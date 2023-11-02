@@ -1,0 +1,17 @@
+---
+deployment:
+  tasks:
+    - name: Checkout code from your repository
+      command: git clone https://github.com/gkunwar059/bloodbankproject_backend.git 	/home/lifelin3/vcs/
+
+    - name: Activate virtual environment and install requirements
+      command: source /home/lifelin3/virtualenv/root/3.10/bin/activate && cd /home/lifelin3/vsc && pip install -r requirements.txt
+
+    - name: Apply database migrations
+      command: /home/lifelin3/virtualenv/root/3.10/bin/python /home/lifelin3/vsc manage.py migrate
+
+    # - name: Collect static files
+    #   command: /home/yourcpanelusername/venv/bin/python /home/yourcpanelusername/public_html/your-django-project/manage.py collectstatic --noinput
+
+    - name: Restart Apache to apply changes
+      command: /usr/local/cpanel/scripts/restartsrv_httpd
