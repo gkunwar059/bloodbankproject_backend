@@ -10,12 +10,13 @@ from store.models import (Address, AssociateHospital, AssociateHospitalMember,
                           AssociateHospitalQuickContact, AssociateVolunteer,
                           AssociateVolunteerMember,
                           AssociateVolunteerQuickContact, Blog,
-                          BloodDonorRequest, District,
+                          BloodDonorRequest, ContactUs, District,
                           EmergencyDonorOrganization,
                           EmergencyDonorOrganizationMember,
                           EmergencyDonorOrganizationQuickContact, Gallery,
-                          GalleryImage, Municipality, Person, Province,
-                          Sponsor, UserReview, VolunteerRequest, Ward)
+                          GalleryImage, Municipality, MunicipalityQuickContact,
+                          Person, Province, Sponsor, UserReview,
+                          VolunteerRequest, Ward)
 
 # from store.models import  PermanentAddress, Person, TemporaryAddress, WorkplaceAddress
 
@@ -77,10 +78,15 @@ class DistrictAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
+class MunicipalityQuickContactAdminInline(admin.TabularInline):
+    model = MunicipalityQuickContact
+    extra = 0
+
 @admin.register(Municipality)
 class MunicipalityAdmin(admin.ModelAdmin):
     list_display = ['name']
     search_fields = ['name']
+    inlines = [MunicipalityQuickContactAdminInline]
 
 
 @admin.register(Ward)
@@ -234,3 +240,9 @@ class VolunteerRequestAdmin(admin.ModelAdmin):
 class SponsorAdmin(admin.ModelAdmin):
     # list_display = ['name', 'link', 'image']
     list_display = ['name', 'link']
+
+
+@admin.register(ContactUs)
+class SponsorAdmin(admin.ModelAdmin):
+    # list_display = ['name', 'link', 'image']
+    list_display = ['id', 'name', 'email', 'phone']

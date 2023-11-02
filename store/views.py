@@ -21,7 +21,7 @@ from store.models import (AssociateHospital, AssociateHospitalMember,
                           AssociateHospitalQuickContact, AssociateVolunteer,
                           AssociateVolunteerMember,
                           AssociateVolunteerQuickContact, Blog,
-                          BloodDonorRequest, District,
+                          BloodDonorRequest, ContactUs, District,
                           EmergencyDonorOrganization,
                           EmergencyDonorOrganizationMember,
                           EmergencyDonorOrganizationQuickContact, Gallery,
@@ -32,8 +32,8 @@ from store.serializers import (
     AssociateHospitalMemberSerializer, AssociateHospitalQuickContactSerializer,
     AssociateHospitalSerializer, AssociateVolunteerMemberSerializer,
     AssociateVolunteerQickConactSerializer, AssociateVolunteerSerializer,
-    BlogSerializer, BloodDonorRequestSerializer, DistrictSerializer,
-    EmergencyDonorOrganizationMemberSerializer,
+    BlogSerializer, BloodDonorRequestSerializer, ContactUsSerializer,
+    DistrictSerializer, EmergencyDonorOrganizationMemberSerializer,
     EmergencyDonorOrganizationQuickContactSerializer,
     EmergencyDonorOrganizationSerializer, GalleryImgeSerializer,
     GallerySerializer, MunicipalityQuickContactSerializer,
@@ -66,11 +66,8 @@ class PersonViewSet(ModelViewSet):
             latest_donation__gte=past_datetime, user__is_donor=True)
         serializer = PersonSerializer(donors, many=True)
         result = serializer.data
-        # print(result)
-        # print(list(result) )
         recent_hospital_donors=AssociateHospitalMember.objects.filter( latest_donation__gte=past_datetime).values()
         recent_hospital_donors_data = AssociateHospitalMemberSerializer(recent_hospital_donors, many=True).data
-        # recent_emergency_donors=EmergencyDonorOrganizationMember.objects.filter( latest_donation__gte=past_datetime).values()
         recent_associate_donors=AssociateVolunteerMember.objects.filter( latest_donation__gte=past_datetime).values()
         recent_associate_donors_data = AssociateVolunteerMemberSerializer(recent_associate_donors, many=True).data
         recent_emergency_donors= EmergencyDonorOrganizationMember.objects.filter( latest_donation__gte=past_datetime)
@@ -83,10 +80,11 @@ class PersonViewSet(ModelViewSet):
 
     @action(detail=False, methods=['GET'])
     def get_milestones(self, request):
-        active_donors_count= Person.objects.all().filter(user__is_donor=True).count()
+        active_donors_count= Person.objects.all().filter(user__is_donor=True).count() + EmergencyDonorOrganizationMember.objects.all().count() + AssociateHospitalMember.objects.all().count() + AssociateVolunteerMember.objects.all().count()
         volunteer_count = Person.objects.all().filter(user__is_volunteer=True).count()
-        donors_till_date = Person.objects.all().filter(latest_donation__isnull = False).count()
-        total_blood_recipients = Person.objects.all().filter(latest_received__isnull = False).count()
+        donors_till_date = Person.objects.all().filter(latest_donation__isnull = False).count() + EmergencyDonorOrganizationMember.objects.all().filter( latest_donation__isnull=False).count() + AssociateHospitalMember.objects.all().filter( latest_donation__isnull=False).count() + AssociateVolunteerMember.objects.all().filter( latest_donation__isnull=False).count()
+        # total_blood_recipients = Person.objects.all().filter(latest_received__isnull = False).count()
+        total_blood_recipients = Person.objects.all().filter(latest_received__isnull = False).count() + EmergencyDonorOrganizationMember.objects.all().filter( latest_received__isnull=False).count() + AssociateHospitalMember.objects.all().filter( latest_received__isnull=False).count() + AssociateVolunteerMember.objects.all().filter( latest_received__isnull=False).count()
         return Response(data= {
             "active_donors_count": active_donors_count,
             "volunteer_count": volunteer_count,
@@ -307,6 +305,9 @@ class SponsorViewSet(ModelViewSet):
     serializer_class = SponsorSerializer
 
 
+class ContactUsViewSet(ModelViewSet):
+    queryset = ContactUs.objects.all()
+    serializer_class = ContactUsSerializer
 
 User = get_user_model()
 
@@ -339,9 +340,6 @@ class OTPCreateView(APIView):
                 return Response({'detail': 'OTP code sent to your email'}, status=status.HTTP_200_OK)
 
         return Response({'detail': 'User not found'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-
 
 class OTPConfirmView(APIView):
     def post(self, request):

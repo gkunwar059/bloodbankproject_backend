@@ -369,3 +369,14 @@ class Sponsor(models.Model):
     link = models.CharField(max_length=255, null=True, blank=True)
     image = models.ImageField(
         upload_to='sponsors/images', null=True, blank=True)
+
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, null=True, blank=True)
+    phone = models.CharField(max_length=10,  null=True, blank=True)
+    message = models.TextField()
+    
+    class Meta:
+        verbose_name = 'Contact Us'
+        verbose_name_plural = 'Contact Us'

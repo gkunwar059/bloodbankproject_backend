@@ -22,6 +22,7 @@ router.register('associate-hospitals', views.AssociateHospitalViewSet , basename
 router.register('donor-requests', views.BloodDonorRequestViewSet , basename='donor-requests')
 router.register('volunteer-requests', views.VolunteerRequestViewSet , basename='volunteer-requests')
 router.register('sponsors', views.SponsorViewSet , basename='sponsors')
+router.register('contact-us', views.ContactUsViewSet , basename='contact-us')
 
 gallery_router = routers.NestedDefaultRouter(router, 'galleries', lookup='gallery')
 emergency_router = routers.NestedDefaultRouter(router, 'emergency-donors', lookup='emergency')
@@ -30,11 +31,11 @@ hospital_router = routers.NestedDefaultRouter(router, 'associate-hospitals', loo
 municipality_router = routers.NestedDefaultRouter(router, 'municipalities', lookup='municipality')
 
 
-
 gallery_router.register('images', views.GalleryImageViewSet, basename='gallery-images')
 emergency_router.register('members', views.EmergencyDonorOrganizationMemberViewSet, basename='emergency-members')
 associate_router.register('members', views.AssociateVolunteerMemberViewSet, basename='associate-members')
 hospital_router.register('members', views.AssociateHospitalMemberViewSet, basename='hospital-members')
+municipality_router.register('quick-contacts', views.MunicipalityQuickContactViewSet, basename='municipality-quick-contacts')
 associate_router.register('quick-contacts', views.AssociateVolunteerQuickContactViewSet, basename='associate-quick-contacts')
 hospital_router.register('quick-contacts', views.AssociateHospitalQuickContactViewSet, basename='hospital-quick-contacts')
 emergency_router.register('quick-contacts', views.EmergencyDonorOrganizationQuickContactViewSet, basename='emergency-quick-contacts')

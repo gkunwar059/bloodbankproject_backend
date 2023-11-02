@@ -7,7 +7,7 @@ from store.models import (Address, AssociateHospital, AssociateHospitalMember,
                           AssociateHospitalQuickContact, AssociateVolunteer,
                           AssociateVolunteerMember,
                           AssociateVolunteerQuickContact, Blog,
-                          BloodDonorRequest, District,
+                          BloodDonorRequest, ContactUs, District,
                           EmergencyDonorOrganization,
                           EmergencyDonorOrganizationMember,
                           EmergencyDonorOrganizationQuickContact, Gallery,
@@ -230,3 +230,9 @@ class SponsorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sponsor
         fields = ['id', 'name', 'image', 'link']
+
+
+class ContactUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactUs
+        fields = ['id', 'name', 'email', 'phone', 'message']
