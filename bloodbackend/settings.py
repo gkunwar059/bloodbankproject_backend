@@ -91,16 +91,21 @@ WSGI_APPLICATION = 'bloodbackend.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+ 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bloodbank',
-        'USER': 'root',
-        'PASSWORD': '',
+        'NAME': 'lifeline3_bloodbank',
+        'USER': 'lifelin3_ganeshkunwar',
+        'PASSWORD': 'ganeshkunwar@2054',
+        'HOST':'http://lifelineachham.org'
     }
+ 
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'bloodbank',
+    #     'USER': 'root',
+    #     'PASSWORD': '',
+    # }
 }
 
 
