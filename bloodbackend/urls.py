@@ -17,6 +17,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import include, path
 
 admin.site.site_header = 'Lifeline Achham'
@@ -27,7 +28,8 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('core/', include('core.urls')),
-    path('', include('store.urls')),
+    # path('', include('store.urls')),
+    path('', lambda request: redirect('/admin/')),
     path('chaining/', include('smart_selects.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

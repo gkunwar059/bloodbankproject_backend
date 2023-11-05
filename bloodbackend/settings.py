@@ -92,20 +92,20 @@ WSGI_APPLICATION = 'bloodbackend.wsgi.application'
 
 DATABASES = {
  
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lifeline3_bloodbank',
-        'USER': 'lifelin3_ganeshkunwar',
-        'PASSWORD': 'ganeshkunwar@2054',
-        'HOST':'http://lifelineachham.org'
-    }
- 
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'bloodbank',
-    #     'USER': 'root',
-    #     'PASSWORD': '',
+    #     'NAME': 'lifeline3_bloodbank',
+    #     'USER': 'lifelin3_ganeshkunwar',
+    #     'PASSWORD': 'ganeshkunwar@2054',
+    #     'HOST':'http://lifelineachham.org'
     # }
+ 
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bloodbank',
+        'USER': 'root',
+        'PASSWORD': '',
+    }
 }
 
 
